@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="32x32"><meta name="google-site-verification" content="X4XROnpYkPQrrcs1BnKxPb3ed5YmqRWQ9rLpIevdmjE"><meta name="description" content="寒假学习之SVG介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="了解SVG格式">
+<meta property="og:url" content="https://vikiboss.top/2020/02/16/svg-format-intro/index.html">
+<meta property="og:site_name" content="Viki&#39;s Blog">
+<meta property="og:description" content="寒假学习之SVG介绍">
+<meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-02-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-21T02:01:42.664Z">
+<meta property="article:author" content="Viki">
+<meta property="article:tag" content="Blog Viki">
+<meta name="twitter:card" content="summary"><title>了解SVG格式 | Viki's Blog</title><link ref="canonical" href="https://vikiboss.top/2020/02/16/svg-format-intro/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-1861620172391138" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-177056870-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-177056870-1');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(https://i.loli.net/2020/11/21/8SGjpezdYDC4PE1.gif) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Viki's Blog</div><div class="header-banner-info__subtitle">努力上进且优秀</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">了解SVG格式</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon" data-popover="发表时间" data-popover-pos="up"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__value">2020-02-16</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon" data-popover="修改时间" data-popover-pos="up"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__value">2020-11-21</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon" data-popover="字数统计" data-popover-pos="up"><i class="far fa-file-word"></i></span><span class="post-meta-item__value">1.2k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon" data-popover="阅读时间" data-popover-pos="up"><i class="far fa-clock"></i></span><span class="post-meta-item__value">8分</span></span></div></header><div class="post-body">
+        <h2 id="SVG-介绍"   >
+          <a href="#SVG-介绍" class="heading-link"><i class="fas fa-link"></i></a>SVG 介绍</h2>
+      
+        <h3 id="什么是-SVG-？"   >
+          <a href="#什么是-SVG-？" class="heading-link"><i class="fas fa-link"></i></a>什么是 SVG ？</h3>
+      <p><strong>一种图像文件格式</strong>，英文全称 Scalable Vector Graphics，意为<strong>可缩放的矢量图形</strong>。</p>
+<p>它是基于 XML（Extensible Markup Language），由 World Wide Web Consortium（W3C）联盟进行开发的。严格来说应该是一种开放标准的矢量图形语言，可让你设计激动人心的、高分辨率的 Web 图形页面。用户可以直接<strong>用代码来描绘图像</strong>，可以用<strong>任何文字处理工具打开 SVG 图像</strong>，通过改变部分代码来使图像具有交互功能，并可以随时插入到 HTML 中通过浏览器来观看。</p>
+<p>主流浏览器均支持 SVG。<strong>加载慢</strong>是 SVG 的一个缺点。但是 SVG 也有自身的优点，比如它<strong>实现了 DOM 接口</strong>（比 Canvas 方便），<strong>不需要安装第三方插件</strong>就可以在浏览器中使用（比 Flash 方便）。</p>
+
+        <h3 id="为什么要用-SVG-？"   >
+          <a href="#为什么要用-SVG-？" class="heading-link"><i class="fas fa-link"></i></a>为什么要用 SVG ？</h3>
+      <p>相比于其他图像格式，SVG 格式的优势在于：</p>
+<ul>
+<li><p>SVG 可被非常多的工具读取和修改（比如记事本）</p>
+</li>
+<li><p>SVG 与 JPEG 和 GIF 图像比起来，<strong>尺寸更小</strong>，且可压缩性更强。</p>
+</li>
+<li><p>SVG 是可伸缩的</p>
+</li>
+<li><p>SVG 图像可在任何的分辨率下被高质量地打印</p>
+</li>
+<li><p>SVG 可在图像质量不下降的情况下被放大</p>
+</li>
+<li><p>SVG 图像中的<strong>文本</strong>是<strong>可选</strong>的，同时也是<strong>可搜索</strong>的（<strong>很适合制作地图</strong>）</p>
+</li>
+<li><p>SVG 可以<strong>与 JavaScript 技术一起运行</strong></p>
+</li>
+<li><p>SVG 是开放的标准</p>
+</li>
+<li><p>SVG 文件是纯粹的 XML</p>
+</li>
+</ul>
+
+        <h4 id="SVG-与-Flash"   >
+          <a href="#SVG-与-Flash" class="heading-link"><i class="fas fa-link"></i></a>SVG 与 Flash</h4>
+      <p>与 Flash 相比，SVG 最大的优势是与其他标准（比如 XSL 和 DOM）相兼容。而 Flash 则是未开源的私有技术。</p>
+
+        <h3 id="基础"   >
+          <a href="#基础" class="heading-link"><i class="fas fa-link"></i></a>基础</h3>
+      
+        <h4 id="一个简单的例子"   >
+          <a href="#一个简单的例子" class="heading-link"><i class="fas fa-link"></i></a>一个简单的例子</h4>
+      <figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span></span></span><br><span class="line"><span class="tag">  <span class="attr">version</span>=<span class="string">"1.1"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">baseProfile</span>=<span class="string">"full"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">width</span>=<span class="string">"300"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">height</span>=<span class="string">"200"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">mlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rect</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"100%"</span> <span class="attr">fill</span>=<span class="string">"red"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"150"</span> <span class="attr">cy</span>=<span class="string">"100"</span> <span class="attr">r</span>=<span class="string">"80"</span> <span class="attr">fill</span>=<span class="string">"green"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">text</span> <span class="attr">x</span>=<span class="string">"150"</span> <span class="attr">y</span>=<span class="string">"125"</span> <span class="attr">font-size</span>=<span class="string">"60"</span> <span class="attr">text-anchor</span>=<span class="string">"middle"</span> <span class="attr">fill</span>=<span class="string">"white"</span>&gt;</span></span><br><span class="line">    SVG</span><br><span class="line">  <span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>最后样子是这样的 👉 <span class="exturl"><a class="exturl__link"   href="https://media.prod.mdn.mozit.cloud/attachments/2012/07/09/3075/89b1e0a26e8421e19f907e0522b188bd/svgdemo1.xml"  target="_blank" rel="noopener">链接 🔗</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>该图绘制流程包括以下几步：</p>
+<ol>
+<li>从 SVG 根元素开始：<ul>
+<li>应舍弃来自 (X)HTML 的 doctype 声明，因为基于 SVG 的 DTD 验证导致的问题比它能解决的问题更多。</li>
+<li><code>version</code>和<code>baseProfile</code>属性是必不可少的，供其它类型的验证方式确定 SVG 版本。</li>
+<li>作为 XML 的一种方言，SVG 必须正确的绑定命名空间 （在 xmlns 属性中绑定）。</li>
+</ul>
+</li>
+<li>绘制一个完全覆盖图像区域的矩形 ，把背景颜色设为红色。</li>
+<li>一个半径 80px 的绿色圆圈绘制在红色矩形的正中央 （向右偏移 150px，向下偏移 100px）。</li>
+<li>绘制文字“SVG”。文字被填充为白色， 通过设置居中的锚点把文字定位到期望的位置：在这种情况下，中心点应该对应于绿色圆圈的中点。还可以精细调整字体大小和垂直位置，确保最后的样式是美观的。</li>
+</ol>
+<blockquote>
+<p>想了解更多？请参考文末详细教程</p>
+</blockquote>
+
+        <h3 id="现实中的使用"   >
+          <a href="#现实中的使用" class="heading-link"><i class="fas fa-link"></i></a>现实中的使用</h3>
+      <ul>
+<li>
+        <h4 id="直接嵌入-SVG-代码在网页中使用："   >
+          <a href="#直接嵌入-SVG-代码在网页中使用：" class="heading-link"><i class="fas fa-link"></i></a>直接嵌入 SVG 代码在网页中使用：</h4>
+      <figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">version</span>=<span class="string">"1.1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">circle</span></span></span><br><span class="line"><span class="tag">    <span class="attr">cx</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">cy</span>=<span class="string">"50"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">r</span>=<span class="string">"40"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">stroke</span>=<span class="string">"black"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">stroke-width</span>=<span class="string">"2"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">fill</span>=<span class="string">"red"</span></span></span><br><span class="line"><span class="tag">  /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>可以像上述这样，直接将 svg 标签嵌入到 html 当中引入 svg 图片</p>
+<blockquote>
+<p>其他用 embed iframe object 标签引的入方法此处不作介绍，有兴趣自行搜索相关用法。</p>
+</blockquote>
+</li>
+<li>
+        <h4 id="用-a-标签链接到-SVG-文件"   >
+          <a href="#用-a-标签链接到-SVG-文件" class="heading-link"><i class="fas fa-link"></i></a>用 a 标签链接到 SVG 文件</h4>
+      <figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"circle1.svg"</span>&gt;</span>Click here to view SVG file<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+</li>
+<li>
+        <h4 id="SVG-也可以作为本地的一种图片格式文件"   >
+          <a href="#SVG-也可以作为本地的一种图片格式文件" class="heading-link"><i class="fas fa-link"></i></a>SVG 也可以作为本地的一种图片格式文件</h4>
+      <p>如，新建一个 <code>demo.svg</code> 文件，然后写入以下内容</p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" standalone="no"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">svg</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//W3C//DTD SVG 1.1//EN"</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">version</span>=<span class="string">"1.1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"100"</span> <span class="attr">cy</span>=<span class="string">"50"</span> <span class="attr">r</span>=<span class="string">"40"</span> <span class="attr">stroke</span>=<span class="string">"black"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">stroke-width</span>=<span class="string">"2"</span> <span class="attr">fill</span>=<span class="string">"red"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>他在资源管理器中默认的显示图标像一个链接</p>
+<p>双击这个文件即可调用浏览器来打开并渲染出该图。</p>
+</li>
+<li>
+        <h4 id="SVG-在网页中还可充当图标来使用"   >
+          <a href="#SVG-在网页中还可充当图标来使用" class="heading-link"><i class="fas fa-link"></i></a>SVG 在网页中还可充当图标来使用</h4>
+      <p>SVG 在网页设计中的一种重要的用途就是充当图标</p>
+<p>可以作为图片用 css 直接引入并使用，如下示例</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#email</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(./img/email.svg) <span class="number">12px</span> <span class="number">7px</span> no-repeat;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">20px</span> <span class="number">20px</span>;</span><br><span class="line">  // 在这设置图标大小，不设置就是svg默认的宽高</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li>
+        <h4 id="制作高质量的图片"   >
+          <a href="#制作高质量的图片" class="heading-link"><i class="fas fa-link"></i></a>制作高质量的图片</h4>
+      <p>另外，由于其可无限缩放而保持原有质量的特点，SVG 图还常常用作网页的图片素材，以确保在网站被异常缩放后图片仍能保持高质量。</p>
+</li>
+</ul>
+
+        <h3 id="更多"   >
+          <a href="#更多" class="heading-link"><i class="fas fa-link"></i></a>更多</h3>
+      <p>SVG 是一个庞大的规范，想了解更多的绘画方法请访问 👉 <span class="exturl"><a class="exturl__link"   href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial"  target="_blank" rel="noopener">SVG 教程- MDN</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="参考文章"   >
+          <a href="#参考文章" class="heading-link"><i class="fas fa-link"></i></a>参考文章</h3>
+      <ul>
+<li><span class="exturl"><a class="exturl__link"   href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial"  target="_blank" rel="noopener">SVG 教程- MDN</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><a href="[https://baike.baidu.com/item/SVG%E6%A0%BC%E5%BC%8F/3463453?fr=aladdin](https://baike.baidu.com/item/SVG格式/3463453?fr=aladdin)">svg 格式 - 百度百科</a></li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://vikiboss.top">Viki</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://vikiboss.top/2020/02/16/svg-format-intro/">https://vikiboss.top/2020/02/16/svg-format-intro/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://www.multmax.top/images/2020/09/02/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://www.multmax.top/images/2020/09/02/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/03/23/blog-to-hexo/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">博客跳槽记</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/02/14/nginx-basis/"><span class="paginator-prev__text">Nginx 快速入门</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SVG-介绍"><span class="toc-number">1.</span> <span class="toc-text">
+          SVG 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-SVG-？"><span class="toc-number">1.1.</span> <span class="toc-text">
+          什么是 SVG ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要用-SVG-？"><span class="toc-number">1.2.</span> <span class="toc-text">
+          为什么要用 SVG ？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SVG-与-Flash"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          SVG 与 Flash</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基础"><span class="toc-number">1.3.</span> <span class="toc-text">
+          基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一个简单的例子"><span class="toc-number">1.3.1.</span> <span class="toc-text">
+          一个简单的例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#现实中的使用"><span class="toc-number">1.4.</span> <span class="toc-text">
+          现实中的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#直接嵌入-SVG-代码在网页中使用："><span class="toc-number">1.4.1.</span> <span class="toc-text">
+          直接嵌入 SVG 代码在网页中使用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用-a-标签链接到-SVG-文件"><span class="toc-number">1.4.2.</span> <span class="toc-text">
+          用 a 标签链接到 SVG 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SVG-也可以作为本地的一种图片格式文件"><span class="toc-number">1.4.3.</span> <span class="toc-text">
+          SVG 也可以作为本地的一种图片格式文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SVG-在网页中还可充当图标来使用"><span class="toc-number">1.4.4.</span> <span class="toc-text">
+          SVG 在网页中还可充当图标来使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#制作高质量的图片"><span class="toc-number">1.4.5.</span> <span class="toc-text">
+          制作高质量的图片</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更多"><span class="toc-number">1.5.</span> <span class="toc-text">
+          更多</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文章"><span class="toc-number">1.6.</span> <span class="toc-text">
+          参考文章</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://q.qlogo.cn/headimg_dl?dst_uin=1141284758&amp;spec=640&amp;img_type=jpg" alt="avatar"></div><p class="sidebar-ov-author__text">努力上进且优秀</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/vikiboss" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://t.me/VikiQAQ" target="_blank" rel="noopener" data-popover="Telegram" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-telegram"></i></span></a><a class="sidebar-ov-social-item" href="/about" target="_blank" rel="noopener" data-popover="1141284758" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">归档</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-code"></i></span><span>Viki</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="220,220,220" opacity="0.8" count="100" zIndex="-2"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '001a68ef5042ee4c963c',
+    clientSecret: 'c0d4f0dfb2aed7f71f84f14617ce062546be298d',
+    repo: 'blog-commits',
+    owner: 'vikiboss',
+    admin: ['vikiboss'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

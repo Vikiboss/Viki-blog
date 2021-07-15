@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="32x32"><meta name="google-site-verification" content="X4XROnpYkPQrrcs1BnKxPb3ed5YmqRWQ9rLpIevdmjE"><meta name="description" content="总结了一些常用的 npm 命令，方便自己日后翻阅。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用 npm 命令汇总">
+<meta property="og:url" content="https://vikiboss.top/2020/09/07/npm-commands-record/index.html">
+<meta property="og:site_name" content="Viki&#39;s Blog">
+<meta property="og:description" content="总结了一些常用的 npm 命令，方便自己日后翻阅。">
+<meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-09-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-21T01:59:14.963Z">
+<meta property="article:author" content="Viki">
+<meta property="article:tag" content="Blog Viki">
+<meta name="twitter:card" content="summary"><title>常用 npm 命令汇总 | Viki's Blog</title><link ref="canonical" href="https://vikiboss.top/2020/09/07/npm-commands-record/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-1861620172391138" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-177056870-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-177056870-1');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(https://i.loli.net/2020/11/21/1JObhHLDaNfFs3v.jpg) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Viki's Blog</div><div class="header-banner-info__subtitle">努力上进且优秀</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">常用 npm 命令汇总</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon" data-popover="发表时间" data-popover-pos="up"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__value">2020-09-07</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon" data-popover="修改时间" data-popover-pos="up"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__value">2020-11-21</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon" data-popover="字数统计" data-popover-pos="up"><i class="far fa-file-word"></i></span><span class="post-meta-item__value">379</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon" data-popover="阅读时间" data-popover-pos="up"><i class="far fa-clock"></i></span><span class="post-meta-item__value">3分</span></span></div></header><div class="post-body"><p>小括号中的参数为可选项</p>
+
+        <h3 id="更换为国内淘宝源（通过命令直接修改）"   >
+          <a href="#更换为国内淘宝源（通过命令直接修改）" class="heading-link"><i class="fas fa-link"></i></a>更换为国内淘宝源（通过命令直接修改）</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="更换为国内淘宝源（通过编辑配置文件）"   >
+          <a href="#更换为国内淘宝源（通过编辑配置文件）" class="heading-link"><i class="fas fa-link"></i></a>更换为国内淘宝源（通过编辑配置文件）</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config edit 加入 registry = https://registry.npm.taobao.org</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="还原成默认国外源"   >
+          <a href="#还原成默认国外源" class="heading-link"><i class="fas fa-link"></i></a>还原成默认国外源</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="查看当前源"   >
+          <a href="#查看当前源" class="heading-link"><i class="fas fa-link"></i></a>查看当前源</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="安装依赖"   >
+          <a href="#安装依赖" class="heading-link"><i class="fas fa-link"></i></a>安装依赖</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install (-g) package_name (--save / --save-dev) (--registry https://registry.npm.taobao.org)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="移除依赖"   >
+          <a href="#移除依赖" class="heading-link"><i class="fas fa-link"></i></a>移除依赖</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall (-g) package_name (--save / --save-dev)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="更新依赖"   >
+          <a href="#更新依赖" class="heading-link"><i class="fas fa-link"></i></a>更新依赖</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update (-g) package_name</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="检查更新"   >
+          <a href="#检查更新" class="heading-link"><i class="fas fa-link"></i></a>检查更新</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm outdated (-g --depth=0)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="设置默认协议"   >
+          <a href="#设置默认协议" class="heading-link"><i class="fas fa-link"></i></a>设置默认协议</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">set</span> init.license <span class="string">"MIT"</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="设置默认作者昵称"   >
+          <a href="#设置默认作者昵称" class="heading-link"><i class="fas fa-link"></i></a>设置默认作者昵称</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">set</span> init.author.name <span class="string">"Viki"</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="设置默认作者邮箱"   >
+          <a href="#设置默认作者邮箱" class="heading-link"><i class="fas fa-link"></i></a>设置默认作者邮箱</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">set</span> init.author.email <span class="string">"vikiboss@qq.com"</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="查看项目主页-如果有的话，无则跳到项目仓库"   >
+          <a href="#查看项目主页-如果有的话，无则跳到项目仓库" class="heading-link"><i class="fas fa-link"></i></a>查看项目主页(如果有的话，无则跳到项目仓库)</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm home package_name</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="查看项目仓库"   >
+          <a href="#查看项目仓库" class="heading-link"><i class="fas fa-link"></i></a>查看项目仓库</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm repo package_name</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="移除无关依赖"   >
+          <a href="#移除无关依赖" class="heading-link"><i class="fas fa-link"></i></a>移除无关依赖</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm prune (package_name) (--production)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="清理缓存，一般不需要删，除非遇到错误-npm-lt-5"   >
+          <a href="#清理缓存，一般不需要删，除非遇到错误-npm-lt-5" class="heading-link"><i class="fas fa-link"></i></a>清理缓存，一般不需要删，除非遇到错误 (npm &lt; @5)</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm cache clean</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="清理缓存，一般不需要删，除非遇到错误-npm-gt-5"   >
+          <a href="#清理缓存，一般不需要删，除非遇到错误-npm-gt-5" class="heading-link"><i class="fas fa-link"></i></a>清理缓存，一般不需要删，除非遇到错误 (npm &gt; @5)</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm cache verify</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="查看项目依赖"   >
+          <a href="#查看项目依赖" class="heading-link"><i class="fas fa-link"></i></a>查看项目依赖</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls (--depth 0)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="查看当前的配置"   >
+          <a href="#查看当前的配置" class="heading-link"><i class="fas fa-link"></i></a>查看当前的配置</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="更新至最新的公测版本"   >
+          <a href="#更新至最新的公测版本" class="heading-link"><i class="fas fa-link"></i></a>更新至最新的公测版本</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm@latest npm</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="更新至最新的发布版本（比-latest-更新）"   >
+          <a href="#更新至最新的发布版本（比-latest-更新）" class="heading-link"><i class="fas fa-link"></i></a>更新至最新的发布版本（比 latest 更新）</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm@next npm</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="添加用户信息"   >
+          <a href="#添加用户信息" class="heading-link"><i class="fas fa-link"></i></a>添加用户信息</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm adduser / npm login</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="添加配置信息"   >
+          <a href="#添加配置信息" class="heading-link"><i class="fas fa-link"></i></a>添加配置信息</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> foo:port 80</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="关于-npm-链接"   >
+          <a href="#关于-npm-链接" class="heading-link"><i class="fas fa-link"></i></a>关于 npm 链接</h2>
+      <p>作者主页地址: <span class="exturl"><a class="exturl__link"   href="https://npmjs.com/~vikiboss"  target="_blank" rel="noopener">https://npmjs.com/~username</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<blockquote>
+<p>如 vikiboss 主页: <span class="exturl"><a class="exturl__link"   href="https://npmjs.com/~vikiboss"  target="_blank" rel="noopener">https://npmjs.com/~vikiboss</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+<p>包主页地址: <span class="exturl"><a class="exturl__link"   href="https://npmjs.com/package/axios"  target="_blank" rel="noopener">https://npmjs.com/package/package_name</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<blockquote>
+<p>如 axios 主页: <span class="exturl"><a class="exturl__link"   href="https://npmjs.com/package/axios"  target="_blank" rel="noopener">https://npmjs.com/package/axios</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://vikiboss.top">Viki</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://vikiboss.top/2020/09/07/npm-commands-record/">https://vikiboss.top/2020/09/07/npm-commands-record/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://www.multmax.top/images/2020/09/02/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://www.multmax.top/images/2020/09/02/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/09/20/scoop-basis-commands/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">scoop —— 实用的 windows 包管理软件</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/09/06/python-basis/"><span class="paginator-prev__text">Python3 小白快速入门</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#更换为国内淘宝源（通过命令直接修改）"><span class="toc-number">1.</span> <span class="toc-text">
+          更换为国内淘宝源（通过命令直接修改）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更换为国内淘宝源（通过编辑配置文件）"><span class="toc-number">2.</span> <span class="toc-text">
+          更换为国内淘宝源（通过编辑配置文件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#还原成默认国外源"><span class="toc-number">3.</span> <span class="toc-text">
+          还原成默认国外源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看当前源"><span class="toc-number">4.</span> <span class="toc-text">
+          查看当前源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装依赖"><span class="toc-number">5.</span> <span class="toc-text">
+          安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移除依赖"><span class="toc-number">6.</span> <span class="toc-text">
+          移除依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新依赖"><span class="toc-number">7.</span> <span class="toc-text">
+          更新依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查更新"><span class="toc-number">8.</span> <span class="toc-text">
+          检查更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置默认协议"><span class="toc-number">9.</span> <span class="toc-text">
+          设置默认协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置默认作者昵称"><span class="toc-number">10.</span> <span class="toc-text">
+          设置默认作者昵称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置默认作者邮箱"><span class="toc-number">11.</span> <span class="toc-text">
+          设置默认作者邮箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看项目主页-如果有的话，无则跳到项目仓库"><span class="toc-number">12.</span> <span class="toc-text">
+          查看项目主页(如果有的话，无则跳到项目仓库)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看项目仓库"><span class="toc-number">13.</span> <span class="toc-text">
+          查看项目仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移除无关依赖"><span class="toc-number">14.</span> <span class="toc-text">
+          移除无关依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理缓存，一般不需要删，除非遇到错误-npm-lt-5"><span class="toc-number">15.</span> <span class="toc-text">
+          清理缓存，一般不需要删，除非遇到错误 (npm &lt; @5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理缓存，一般不需要删，除非遇到错误-npm-gt-5"><span class="toc-number">16.</span> <span class="toc-text">
+          清理缓存，一般不需要删，除非遇到错误 (npm &gt; @5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看项目依赖"><span class="toc-number">17.</span> <span class="toc-text">
+          查看项目依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看当前的配置"><span class="toc-number">18.</span> <span class="toc-text">
+          查看当前的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新至最新的公测版本"><span class="toc-number">19.</span> <span class="toc-text">
+          更新至最新的公测版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新至最新的发布版本（比-latest-更新）"><span class="toc-number">20.</span> <span class="toc-text">
+          更新至最新的发布版本（比 latest 更新）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加用户信息"><span class="toc-number">21.</span> <span class="toc-text">
+          添加用户信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加配置信息"><span class="toc-number">22.</span> <span class="toc-text">
+          添加配置信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于-npm-链接"><span class="toc-number"></span> <span class="toc-text">
+          关于 npm 链接</span></a></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://q.qlogo.cn/headimg_dl?dst_uin=1141284758&amp;spec=640&amp;img_type=jpg" alt="avatar"></div><p class="sidebar-ov-author__text">努力上进且优秀</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/vikiboss" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://t.me/VikiQAQ" target="_blank" rel="noopener" data-popover="Telegram" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-telegram"></i></span></a><a class="sidebar-ov-social-item" href="/about" target="_blank" rel="noopener" data-popover="1141284758" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">归档</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-code"></i></span><span>Viki</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="220,220,220" opacity="0.8" count="100" zIndex="-2"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '001a68ef5042ee4c963c',
+    clientSecret: 'c0d4f0dfb2aed7f71f84f14617ce062546be298d',
+    repo: 'blog-commits',
+    owner: 'vikiboss',
+    admin: ['vikiboss'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

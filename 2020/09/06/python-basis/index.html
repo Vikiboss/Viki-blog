@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="32x32"><meta name="google-site-verification" content="X4XROnpYkPQrrcs1BnKxPb3ed5YmqRWQ9rLpIevdmjE"><meta name="description" content="Python 是一种面向对象、解释型、动态数据类型的高级程序设计脚本语言，同时也是一种功能强大而完善的通用型语言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3 小白快速入门">
+<meta property="og:url" content="https://vikiboss.top/2020/09/06/python-basis/index.html">
+<meta property="og:site_name" content="Viki&#39;s Blog">
+<meta property="og:description" content="Python 是一种面向对象、解释型、动态数据类型的高级程序设计脚本语言，同时也是一种功能强大而完善的通用型语言。">
+<meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-09-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-21T02:02:58.054Z">
+<meta property="article:author" content="Viki">
+<meta property="article:tag" content="Blog Viki">
+<meta name="twitter:card" content="summary"><title>Python3 小白快速入门 | Viki's Blog</title><link ref="canonical" href="https://vikiboss.top/2020/09/06/python-basis/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-1861620172391138" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-177056870-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-177056870-1');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(https://i.loli.net/2020/11/21/AYtruLMBnKT4dJa.jpg) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Viki's Blog</div><div class="header-banner-info__subtitle">努力上进且优秀</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Python3 小白快速入门</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon" data-popover="发表时间" data-popover-pos="up"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__value">2020-09-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon" data-popover="修改时间" data-popover-pos="up"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__value">2020-11-21</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon" data-popover="字数统计" data-popover-pos="up"><i class="far fa-file-word"></i></span><span class="post-meta-item__value">1.3k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon" data-popover="阅读时间" data-popover-pos="up"><i class="far fa-clock"></i></span><span class="post-meta-item__value">8分</span></span></div></header><div class="post-body">
+        <h2 id="Python-中的数据类型"   >
+          <a href="#Python-中的数据类型" class="heading-link"><i class="fas fa-link"></i></a>Python 中的数据类型</h2>
+      <p>Python 中的变量不需要声明。每个变量在使用前都必须赋值，变量赋值以后该变量才会被创建。</p>
+<p>Python 是<strong>弱类型</strong>语言，变量的类型是不确定的。</p>
+<p>Python 有<strong>六种</strong>标准数据类型</p>
+
+        <h3 id="不可变数据"   >
+          <a href="#不可变数据" class="heading-link"><i class="fas fa-link"></i></a>不可变数据</h3>
+      <ol>
+<li><p><code>Number</code> 数字</p>
+<ul>
+<li><code>int</code> 整数 如：1，2，0，-43 （Python3 中的整数大小无限制）</li>
+<li><code>float</code> 小数 如：0.2，-54.0，15.9</li>
+<li><code>bool</code> 布尔数（1 代表 true，2 代表 false）如：false 或 true 之一<blockquote>
+<p>在 Python2 中是没有布尔型的，它用数字 0 表示 False，用 1 表示 True。到 Python3 中，把 True 和 False 定义成关键字了，但它们的值还是 1 和 0，它们可以和数字相加。</p>
+</blockquote>
+</li>
+<li><code>complex</code> 复数 如 1+4j，7j，3</li>
+</ul>
+</li>
+<li><p><code>String</code> 字符串</p>
+<p>Python 中的字符串用单引号 <code>&#39;</code> 或双引号 <code>&quot;</code> 括起来，同时使用反斜杠 <code>\</code> 转义特殊字符。和其他语言类似，从 0 开始索引，-1 代表最后一个字符。同时还可以用 <code>:</code> 截取片段，左闭右开取值。</p>
+<p>示例如下</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'VikiVikiViki'</span></span><br><span class="line">str[<span class="number">0</span>] <span class="comment"># V</span></span><br><span class="line">str[<span class="number">-2</span>] <span class="comment"># k</span></span><br><span class="line">str[<span class="number">1</span>:<span class="number">3</span>] <span class="comment">#ik</span></span><br><span class="line">str[<span class="number">4</span>:<span class="number">-2</span>] <span class="comment"># VikiVi</span></span><br><span class="line">str2 = <span class="string">'Viki\nHello!'</span> <span class="comment"># 字符串被转义\n为换行</span></span><br><span class="line">str3 = <span class="string">r'Viki\nHello!'</span> <span class="comment"># 防止字符串内容被转义</span></span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><code>Tuple</code> 元组</p>
+</li>
+</ol>
+
+        <h3 id="可变数据"   >
+          <a href="#可变数据" class="heading-link"><i class="fas fa-link"></i></a>可变数据</h3>
+      <ol start="4">
+<li><code>List</code> 列表</li>
+<li><code>Set</code> 集合</li>
+<li><code>Dictionary</code> 字典</li>
+</ol>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>， <span class="number">2</span>， <span class="number">3</span>] <span class="comment"># list是数组 使用方括号</span></span><br><span class="line">list[<span class="number">0</span>] <span class="comment"># 1 从0开始 通过索引获取每一项</span></span><br><span class="line">list[<span class="number">1</span>] = <span class="string">'2'</span> <span class="comment"># list的每一项可以修改 且数据类型可不同</span></span><br><span class="line">list[<span class="number">-1</span>] <span class="comment"># 3 负数代表从后开始索引 -1为最后一项的索引</span></span><br><span class="line"></span><br><span class="line">tuple = (<span class="number">1</span>， <span class="number">2</span>， <span class="number">3</span>) <span class="comment"># tuple是元组 使用圆括号</span></span><br><span class="line">tuple[<span class="number">0</span>] <span class="comment"># 结果为1 从0开始 通过索引获取每一项</span></span><br><span class="line">tuple[<span class="number">1</span>] = <span class="number">3</span> <span class="comment"># 运行报错 元组不支持赋值 其内的元素不允许修改</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="Python-中的注释"   >
+          <a href="#Python-中的注释" class="heading-link"><i class="fas fa-link"></i></a>Python 中的注释</h2>
+      <p>注释可以帮助其他人阅读程序，通常用于概括算法、确认变量的用途或者阐明难以理解的代码段。</p>
+<p>在 Python 中，单行注释使用 <code>#</code></p>
+<p>多行注释在需要注释的首尾使用三个单引号<code>&#39;&#39;&#39;</code>或双引号<code>&quot;&quot;&quot;</code></p>
+<p>实例</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是一个单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">这是一个多行注释</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">这也是一个多行注释</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="运算符"   >
+          <a href="#运算符" class="heading-link"><i class="fas fa-link"></i></a>运算符</h2>
+      
+        <h3 id="算数运算符"   >
+          <a href="#算数运算符" class="heading-link"><i class="fas fa-link"></i></a>算数运算符</h3>
+      <p>除了常见的<code>+</code> <code>-</code> <code>*</code> <code>/</code> Python3 还内置:</p>
+<ul>
+<li><code>%</code> 求模运算</li>
+<li><code>**</code> 幂运算</li>
+<li><code>//</code> 整除(返回商的整数部分)</li>
+</ul>
+<p>运算实例如下</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">13</span></span><br><span class="line">y = <span class="number">5</span></span><br><span class="line">x + y <span class="comment"># 18</span></span><br><span class="line">x - y <span class="comment"># 8</span></span><br><span class="line">x * y <span class="comment"># 65</span></span><br><span class="line">x / y <span class="comment"># 2.6 (在Python2中是2)</span></span><br><span class="line">x % y <span class="comment"># 3</span></span><br><span class="line">x ** y <span class="comment"># 371293(13的五次方)</span></span><br><span class="line">x // y <span class="comment"># 2</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="比较运算符"   >
+          <a href="#比较运算符" class="heading-link"><i class="fas fa-link"></i></a>比较运算符</h3>
+      <p>Python3 中的比较运算符有:</p>
+<ul>
+<li><code>==</code> 比较对象是否相等</li>
+<li><code>!=</code> 比较两个对象是否不相等</li>
+<li><code>&gt;</code> 、<code>&gt;=</code> 判断是否大于、大于等于</li>
+<li><code>&lt;</code> 、<code>&lt;=</code> 判断是否小于、小于等于</li>
+</ul>
+<p>实例如下</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2</span></span><br><span class="line">a == b <span class="comment"># false</span></span><br><span class="line">a != b <span class="comment"># true</span></span><br><span class="line">a &gt; b <span class="comment"># flase</span></span><br><span class="line">a &gt;= b <span class="comment"># false</span></span><br><span class="line">a &lt; b <span class="comment"># true</span></span><br><span class="line">a &lt;= b <span class="comment"># true</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="赋值运算符"   >
+          <a href="#赋值运算符" class="heading-link"><i class="fas fa-link"></i></a>赋值运算符</h3>
+      <ul>
+<li><code>=</code> 简单的赋值运算符</li>
+<li><code>+=</code> 加法赋值运算符</li>
+<li><code>-=</code> 减法赋值运算符</li>
+<li><code>*=</code> 乘法赋值运算符</li>
+<li><code>/=</code> 除法赋值运算符</li>
+<li><code>%=</code> 取模赋值运算符</li>
+<li><code>**=</code> 幂赋值运算符</li>
+<li><code>//=</code> 取整除赋值运算符</li>
+<li><strong><code>:=</code> 赋值表达式运算符（也叫海象运算符）（Python3.8 新增）</strong></li>
+</ul>
+<p>实例</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span> <span class="comment"># 将1赋值给a</span></span><br><span class="line">b = <span class="number">2</span> <span class="comment"># 将2赋值给b</span></span><br><span class="line">b += a <span class="comment"># 等价于 b = b + a</span></span><br><span class="line">b -= a <span class="comment"># 等价于 b = b - a</span></span><br><span class="line">b *= a <span class="comment"># 等价于 b = b * a</span></span><br><span class="line">b /= a <span class="comment"># 等价于 b = b / a</span></span><br><span class="line">b %= a <span class="comment"># 等价于 b = b % a</span></span><br><span class="line">b **= a <span class="comment"># 等价于 b = b ** a</span></span><br><span class="line">b //= a <span class="comment"># 等价于 b = b // a</span></span><br><span class="line"><span class="comment"># 原代码（需单独赋值）</span></span><br><span class="line">length = len([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="keyword">if</span> length &gt; <span class="number">0</span>:</span><br><span class="line">    print(<span class="string">'the length of the array is'</span>, length)</span><br><span class="line"><span class="comment"># 使用海象运算符后可在表达式内部为变量赋值</span></span><br><span class="line"><span class="keyword">if</span> length := len([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]):</span><br><span class="line">    print(<span class="string">'the length of the array is'</span>, length)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="逻辑运算符"   >
+          <a href="#逻辑运算符" class="heading-link"><i class="fas fa-link"></i></a>逻辑运算符</h3>
+      <ul>
+<li><code>and</code> 逻辑与运算</li>
+<li><code>or</code> 逻辑或运算</li>
+<li><code>not</code> 逻辑非运算</li>
+</ul>
+<p>实例</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = true</span><br><span class="line">y = false</span><br><span class="line">x <span class="keyword">and</span> y <span class="comment"># false</span></span><br><span class="line">x <span class="keyword">or</span> y <span class="comment"># true</span></span><br><span class="line"><span class="keyword">not</span>(a <span class="keyword">and</span> b) <span class="comment"># true</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="成员运算符"   >
+          <a href="#成员运算符" class="heading-link"><i class="fas fa-link"></i></a>成员运算符</h3>
+      <ul>
+<li><code>in</code> 在指定的序列中找到值返回 True，否则返回 False</li>
+<li><code>not in</code> 在指定的序列中没有找到值返回 True，否则返回 False</li>
+</ul>
+<p>实例</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">x = <span class="number">2</span></span><br><span class="line">x <span class="keyword">in</span> list <span class="comment"># true</span></span><br><span class="line">x <span class="keyword">not</span> <span class="keyword">in</span> list <span class="comment"># false</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="身份运算符"   >
+          <a href="#身份运算符" class="heading-link"><i class="fas fa-link"></i></a>身份运算符</h3>
+      <ul>
+<li><code>is</code> 判断是否引用自一个对象</li>
+<li><code>is not</code> 判断是否引用自不同对象</li>
+</ul>
+<p>实例</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = a</span><br><span class="line">b <span class="keyword">is</span> a <span class="comment"># True</span></span><br><span class="line">b == a <span class="comment"># True</span></span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b <span class="keyword">is</span> a <span class="comment"># False</span></span><br><span class="line">b == a <span class="comment"># True</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="位运算符"   >
+          <a href="#位运算符" class="heading-link"><i class="fas fa-link"></i></a>位运算符</h3>
+      <p>位运算就是直接对整数的二进制位进行操作</p>
+<ul>
+<li><code>&amp;</code> 按位与运算符 用法 <code>a &amp; b</code></li>
+<li><code>|</code> 按位或运算符 用法 <code>a | b</code></li>
+<li><code>^</code> 按位异或运算符 用法 <code>a ^ b</code></li>
+<li><code>~</code> 按位取反运算符 用法 <code>~a</code></li>
+<li><code>&lt;&lt;</code> 左移运算符 用法：<code>a &lt;&lt; 2</code></li>
+<li><code>&gt;&gt;</code> 右移运算符 用法：<code>a &lt;&lt; 2</code></li>
+</ul>
+<p>这一部分运算符用的相对较少，不做过多补充</p>
+
+        <h3 id="运算符优先级"   >
+          <a href="#运算符优先级" class="heading-link"><i class="fas fa-link"></i></a>运算符优先级</h3>
+      <p>所谓优先级，类似于数学里的加减乘除的运算顺序，各运算符优先级如下</p>
+<p>算数运算符&gt;位运算符&gt;比较运算符&gt;赋值运算符&gt;身份运算符&gt;成员运算符&gt;逻辑运算符</p>
+<p>常见运算符的顺序都比较简单,不过多说明</p>
+<blockquote>
+<p>// 2020/9/6 待续</p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://vikiboss.top">Viki</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://vikiboss.top/2020/09/06/python-basis/">https://vikiboss.top/2020/09/06/python-basis/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://www.multmax.top/images/2020/09/02/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://www.multmax.top/images/2020/09/02/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/09/07/npm-commands-record/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">常用 npm 命令汇总</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/09/05/python-introduce-and-diff/"><span class="paginator-prev__text">Python 介绍以及 Python2 与 Python3 的区别</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-中的数据类型"><span class="toc-number">1.</span> <span class="toc-text">
+          Python 中的数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#不可变数据"><span class="toc-number">1.1.</span> <span class="toc-text">
+          不可变数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变数据"><span class="toc-number">1.2.</span> <span class="toc-text">
+          可变数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-中的注释"><span class="toc-number">2.</span> <span class="toc-text">
+          Python 中的注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运算符"><span class="toc-number">3.</span> <span class="toc-text">
+          运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算数运算符"><span class="toc-number">3.1.</span> <span class="toc-text">
+          算数运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较运算符"><span class="toc-number">3.2.</span> <span class="toc-text">
+          比较运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值运算符"><span class="toc-number">3.3.</span> <span class="toc-text">
+          赋值运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑运算符"><span class="toc-number">3.4.</span> <span class="toc-text">
+          逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成员运算符"><span class="toc-number">3.5.</span> <span class="toc-text">
+          成员运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#身份运算符"><span class="toc-number">3.6.</span> <span class="toc-text">
+          身份运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算符"><span class="toc-number">3.7.</span> <span class="toc-text">
+          位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符优先级"><span class="toc-number">3.8.</span> <span class="toc-text">
+          运算符优先级</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://q.qlogo.cn/headimg_dl?dst_uin=1141284758&amp;spec=640&amp;img_type=jpg" alt="avatar"></div><p class="sidebar-ov-author__text">努力上进且优秀</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/vikiboss" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://t.me/VikiQAQ" target="_blank" rel="noopener" data-popover="Telegram" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-telegram"></i></span></a><a class="sidebar-ov-social-item" href="/about" target="_blank" rel="noopener" data-popover="1141284758" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">归档</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-code"></i></span><span>Viki</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="220,220,220" opacity="0.8" count="100" zIndex="-2"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '001a68ef5042ee4c963c',
+    clientSecret: 'c0d4f0dfb2aed7f71f84f14617ce062546be298d',
+    repo: 'blog-commits',
+    owner: 'vikiboss',
+    admin: ['vikiboss'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

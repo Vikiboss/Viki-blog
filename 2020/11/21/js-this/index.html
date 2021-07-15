@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="32x32"><meta name="google-site-verification" content="X4XROnpYkPQrrcs1BnKxPb3ed5YmqRWQ9rLpIevdmjE"><meta name="description" content="JavaScript 之 this 指向判断">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅析JavaScript中this的指向问题">
+<meta property="og:url" content="https://vikiboss.top/2020/11/21/js-this/index.html">
+<meta property="og:site_name" content="Viki&#39;s Blog">
+<meta property="og:description" content="JavaScript 之 this 指向判断">
+<meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-11-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-21T04:18:58.567Z">
+<meta property="article:author" content="Viki">
+<meta property="article:tag" content="Blog Viki">
+<meta name="twitter:card" content="summary"><title>浅析JavaScript中this的指向问题 | Viki's Blog</title><link ref="canonical" href="https://vikiboss.top/2020/11/21/js-this/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-1861620172391138" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-177056870-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-177056870-1');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(https://i.loli.net/2020/11/21/fDXpUSTL6BciRtO.png) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Viki's Blog</div><div class="header-banner-info__subtitle">努力上进且优秀</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">浅析JavaScript中this的指向问题</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon" data-popover="发表时间" data-popover-pos="up"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__value">2020-11-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon" data-popover="修改时间" data-popover-pos="up"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__value">2020-11-21</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon" data-popover="字数统计" data-popover-pos="up"><i class="far fa-file-word"></i></span><span class="post-meta-item__value">1.1k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon" data-popover="阅读时间" data-popover-pos="up"><i class="far fa-clock"></i></span><span class="post-meta-item__value">8分</span></span></div></header><div class="post-body">
+        <h2 id="说在前面"   >
+          <a href="#说在前面" class="heading-link"><i class="fas fa-link"></i></a>说在前面</h2>
+      <p>平时自己写代码或者在参加前端职位的面试的过程中, js 里 this 的指向一直是个热点问题</p>
+<p>这篇文章旨在帮助读者深入了解 js 里各种情况 this 的指向</p>
+<p>在笔者自己彻底理解的同时, 也可以作为后来人的参考</p>
+<blockquote>
+<p>本文主要探讨浏览器环境下的 <code>this</code> 指向问题 node 环境会有所不同 如: 浏览器全局对象是 <code>window</code> 而 node 环境全局对象是 <code>gobal</code></p>
+</blockquote>
+
+        <h2 id="this-指向详析"   >
+          <a href="#this-指向详析" class="heading-link"><i class="fas fa-link"></i></a>this 指向详析</h2>
+      
+        <h3 id="1-全局环境中"   >
+          <a href="#1-全局环境中" class="heading-link"><i class="fas fa-link"></i></a>1. 全局环境中</h3>
+      <p><code>this</code> 指向 <code>window</code></p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 标准模式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// window</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 严格模式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="meta">  "use strict"</span>;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// window</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./main.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js  标准模式的全局环境下</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// window</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js  严格模式的全局环境下</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// window</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="2-function-定义的函数中"   >
+          <a href="#2-function-定义的函数中" class="heading-link"><i class="fas fa-link"></i></a>2. function 定义的函数中</h3>
+      <p>根据<strong>调用对象</strong>与 <strong>js 执行模式</strong>决定</p>
+<ul>
+<li><p>普通函数调用:</p>
+<ul>
+<li>标准模式下: <code>this</code> 指向 <code>window</code></li>
+<li>严格模式下: <code>this</code> 指向 <code>undefined</code></li>
+</ul>
+</li>
+<li><p>函数由对象调用: <code>this</code> 指向 <code>该对象</code></p>
+</li>
+<li><p>通过 <code>new</code> 操作符调用: <code>this</code> 指向 <code>新创建的对象</code></p>
+</li>
+<li><p>通过 <code>call/apply</code> 调用: <code>this</code> 指向 <code>参数指定的对象</code></p>
+</li>
+<li><p>通过 <code>bind</code> 可以修改 <code>this</code> 指向: 返回一个新函数, 这个函数的 <code>this</code> 被绑定为指定对象</p>
+</li>
+</ul>
+<blockquote>
+<p>普通函数调用可以看作是 window 对象调用函数, 此时 this 就指向调用它的对象 即 window 对象</p>
+</blockquote>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 标准模式下 普通函数调用</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于 window.foo()</span></span><br><span class="line">foo(); <span class="comment">// window</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 严格模式下 函数普通调用</span></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(); <span class="comment">// undefined</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过对象调用函数</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.foo(); <span class="comment">// obj</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过 new 操作符调用</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">bar</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.bar = bar;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> foo(<span class="number">2</span>); <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// foo &#123;bar: 2&#125;</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过 call/apply 调用</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="number">1</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.foo);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(); <span class="comment">//undefined</span></span><br><span class="line">bar.call(obj); <span class="comment">// 1</span></span><br><span class="line">bar.apply(obj); <span class="comment">// 1</span></span><br><span class="line">bar.call(<span class="literal">null</span>); <span class="comment">// undefined</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="number">1</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.foo);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(); <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">var</span> bark = bar.bind(obj); <span class="comment">// 无输出</span></span><br><span class="line">bark(); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">obj.foo = <span class="number">2</span>;</span><br><span class="line">bark(); <span class="comment">// 2</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 异步函数中this指向 window</span></span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  bar: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bark</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar);</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bark.call(obj); <span class="comment">// 0 (等待一秒) 100</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="3-ES6-箭头函数中"   >
+          <a href="#3-ES6-箭头函数中" class="heading-link"><i class="fas fa-link"></i></a>3. ES6 箭头函数中</h3>
+      <ul>
+<li><p>箭头函数没有自己的 <code>this</code></p>
+</li>
+<li><p>箭头函数的 <code>this</code> 继承自当前作用域链上最近的 <code>this</code></p>
+</li>
+<li><p>当无法找到时, 指向 <code>window</code></p>
+</li>
+</ul>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  count: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> bar = <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  bar.call(obj);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.count);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(); <span class="comment">// window 100</span></span><br><span class="line">foo.call(obj); <span class="comment">// &#123;count: 0&#125; 0</span></span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>当上述代码中的 <code>var</code> 换为了 <code>let</code> 之后结果又是什么? 不妨自己试试.</p>
+</blockquote>
+
+        <h3 id="其他情况"   >
+          <a href="#其他情况" class="heading-link"><i class="fas fa-link"></i></a>其他情况</h3>
+      
+        <h4 id="html-中调用函数"   >
+          <a href="#html-中调用函数" class="heading-link"><i class="fas fa-link"></i></a>html 中调用函数</h4>
+      <p><code>this</code> 依旧指向 <code>window</code></p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 直接调用函数 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onclick</span>=<span class="string">"msg()"</span>&gt;</span>Viki<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">  <span class="function"><span class="keyword">function</span> <span class="title">msg</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">    alert(<span class="keyword">this</span>); <span class="comment">// this指向window 获取不到元素</span></span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 传入元素参数 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onclick</span>=<span class="string">"foo(event.target)"</span>&gt;</span>Viki<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">  <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(element)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">    alert(element); <span class="comment">// this还是指向window 不过现在可以操作元素</span></span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="通过-js-绑定事件来调用函数"   >
+          <a href="#通过-js-绑定事件来调用函数" class="heading-link"><i class="fas fa-link"></i></a>通过 js 绑定事件来调用函数</h4>
+      <p><code>this</code> 默认指向 <code>元素本身</code></p>
+<p>注意: 在 ie 中使用 <code>attachEvent</code> 时 <code>this</code> 指向 <code>window</code></p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给事件定义函数</span></span><br><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</span><br><span class="line">box.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.id); <span class="comment">// "box"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加事件监听</span></span><br><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</span><br><span class="line">box.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>.id); <span class="comment">// "box"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在ie中使用attachEvent() this指向window</span></span><br><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</span><br><span class="line">box.attachEvent(<span class="string">"onclick"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="keyword">this</span>); <span class="comment">// winodw</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="Ajax-中-原生-XHR-对象的-this-指向问题"   >
+          <a href="#Ajax-中-原生-XHR-对象的-this-指向问题" class="heading-link"><i class="fas fa-link"></i></a>Ajax 中 原生 XHR 对象的 this 指向问题</h4>
+      <p>由于 <code>onreadystatechange</code> 事件的作用域问题, 使用 <code>this</code> 对象，函数可能会在一些浏览器执行失败，或者发生错误. 所以一般使用 xhr 实例对象更加靠谱.</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"https://example.org"</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这里一般使用xhr实例对象而不用this</span></span><br><span class="line">  <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status == <span class="number">304</span>) &#123;</span><br><span class="line">      alert(xhr.responseText);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      alert(<span class="string">"Request Failed: "</span> + xhr.status);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="参考"   >
+          <a href="#参考" class="heading-link"><i class="fas fa-link"></i></a>参考</h2>
+      <p><span class="exturl"><a class="exturl__link"   href="https://www.cnblogs.com/star91/p/5657269.html"  target="_blank" rel="noopener">你不知道的 this - Feminer</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><a href="#">js 语法基础 - lenconda</a></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://vikiboss.top">Viki</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://vikiboss.top/2020/11/21/js-this/">https://vikiboss.top/2020/11/21/js-this/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://www.multmax.top/images/2020/09/02/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://www.multmax.top/images/2020/09/02/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/29/python-crawler/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">记一次使用 Python 爬取B站up主信息经历</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/10/11/git-commands-record/"><span class="paginator-prev__text">Git常用命令速览</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说在前面"><span class="toc-number">1.</span> <span class="toc-text">
+          说在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this-指向详析"><span class="toc-number">2.</span> <span class="toc-text">
+          this 指向详析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-全局环境中"><span class="toc-number">2.1.</span> <span class="toc-text">
+          1. 全局环境中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-function-定义的函数中"><span class="toc-number">2.2.</span> <span class="toc-text">
+          2. function 定义的函数中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ES6-箭头函数中"><span class="toc-number">2.3.</span> <span class="toc-text">
+          3. ES6 箭头函数中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他情况"><span class="toc-number">2.4.</span> <span class="toc-text">
+          其他情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#html-中调用函数"><span class="toc-number">2.4.1.</span> <span class="toc-text">
+          html 中调用函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过-js-绑定事件来调用函数"><span class="toc-number">2.4.2.</span> <span class="toc-text">
+          通过 js 绑定事件来调用函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ajax-中-原生-XHR-对象的-this-指向问题"><span class="toc-number">2.4.3.</span> <span class="toc-text">
+          Ajax 中 原生 XHR 对象的 this 指向问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">
+          参考</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://q.qlogo.cn/headimg_dl?dst_uin=1141284758&amp;spec=640&amp;img_type=jpg" alt="avatar"></div><p class="sidebar-ov-author__text">努力上进且优秀</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/vikiboss" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://t.me/VikiQAQ" target="_blank" rel="noopener" data-popover="Telegram" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-telegram"></i></span></a><a class="sidebar-ov-social-item" href="/about" target="_blank" rel="noopener" data-popover="1141284758" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">归档</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-code"></i></span><span>Viki</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="220,220,220" opacity="0.8" count="100" zIndex="-2"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '001a68ef5042ee4c963c',
+    clientSecret: 'c0d4f0dfb2aed7f71f84f14617ce062546be298d',
+    repo: 'blog-commits',
+    owner: 'vikiboss',
+    admin: ['vikiboss'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

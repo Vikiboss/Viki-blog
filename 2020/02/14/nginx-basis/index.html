@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="32x32"><meta name="google-site-verification" content="X4XROnpYkPQrrcs1BnKxPb3ed5YmqRWQ9rLpIevdmjE"><meta name="description" content="寒假学习之Nginx基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx 快速入门">
+<meta property="og:url" content="https://vikiboss.top/2020/02/14/nginx-basis/index.html">
+<meta property="og:site_name" content="Viki&#39;s Blog">
+<meta property="og:description" content="寒假学习之Nginx基础">
+<meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-21T01:59:06.084Z">
+<meta property="article:author" content="Viki">
+<meta property="article:tag" content="Blog Viki">
+<meta name="twitter:card" content="summary"><title>Nginx 快速入门 | Viki's Blog</title><link ref="canonical" href="https://vikiboss.top/2020/02/14/nginx-basis/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-1861620172391138" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-177056870-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-177056870-1');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(https://i.loli.net/2020/11/21/YCImdiJ4ovhqL1B.jpg) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Viki's Blog</div><div class="header-banner-info__subtitle">努力上进且优秀</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Nginx 快速入门</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon" data-popover="发表时间" data-popover-pos="up"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__value">2020-02-14</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon" data-popover="修改时间" data-popover-pos="up"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__value">2020-11-21</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon" data-popover="字数统计" data-popover-pos="up"><i class="far fa-file-word"></i></span><span class="post-meta-item__value">2.7k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon" data-popover="阅读时间" data-popover-pos="up"><i class="far fa-clock"></i></span><span class="post-meta-item__value">15分</span></span></div></header><div class="post-body">
+        <h2 id="Nginx-简要介绍"   >
+          <a href="#Nginx-简要介绍" class="heading-link"><i class="fas fa-link"></i></a>Nginx 简要介绍</h2>
+      
+        <h3 id="Nginx-与-Apache"   >
+          <a href="#Nginx-与-Apache" class="heading-link"><i class="fas fa-link"></i></a>Nginx 与 Apache</h3>
+      <p><code>Nginx</code> 同 <code>Apache</code> 一样都是一种 WEB 服务器。通过 HTTP 协议提供各种网络服务。</p>
+<p>但毫无争议的世界第一大服务器 <code>Apache</code> 的发展时期很长，它被设计为一个重量级的服务器。</p>
+<p>它不支持高并发的服务器。在 <code>Apache</code> 上运行数以万计的并发访问，会导致服务器消耗大量内存。</p>
+<p>操作系统对其进行进程或线程间的切换也消耗了大量的 CPU 资源，导致 HTTP 请求的平均响应速度降低。</p>
+<p>这些都决定了 <code>Apache</code> 不可能成为高性能 WEB 服务器，轻量级高并发服务器 <code>Nginx</code> 就应运而生了。</p>
+
+        <h3 id="Nginx"   >
+          <a href="#Nginx" class="heading-link"><i class="fas fa-link"></i></a>Nginx</h3>
+      <p><code>Nginx</code> 是一款自由的、开源的、高性能的 HTTP 服务器和反向代理服务器；同时也是一个 IMAP、POP3、SMTP 代理服务器；<code>Nginx</code> 可以作为一个 HTTP 服务器进行网站的发布处理；另外 <code>Nginx</code> 可以作为反向代理进行负载均衡的实现。</p>
+
+        <h2 id="安装"   >
+          <a href="#安装" class="heading-link"><i class="fas fa-link"></i></a>安装</h2>
+      <p>参考 👉<span class="exturl"><a class="exturl__link"   href="http://www.Nginx.cn/install"  target="_blank" rel="noopener">官方网站</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>的安装教程</p>
+<p>本文仅讨论 Nginx 在 Linux 服务器上的基本操作</p>
+<blockquote>
+<p>Windows 系统下使用请参考 👉 <span class="exturl"><a class="exturl__link"   href="https://www.jb51.net/article/86839.htm"  target="_blank" rel="noopener">传送门</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+
+        <h2 id="关于代理"   >
+          <a href="#关于代理" class="heading-link"><i class="fas fa-link"></i></a>关于代理</h2>
+      
+        <h3 id="代理的理解"   >
+          <a href="#代理的理解" class="heading-link"><i class="fas fa-link"></i></a>代理的理解</h3>
+      <p>所谓代理就是一个代表、一个渠道；</p>
+<p>此时就涉及到两个角色，一个是被代理角色，一个是目标角色，被代理角色通过这个代理访问目标角色完成一些任务的过程称为代理操作过程；</p>
+<p>如同生活中的专卖店，客人到 Adidas 专卖店买了一双鞋，这个专卖店就是代理，被代理角色就是 Adidas 厂家，目标角色就是用户。</p>
+
+        <h3 id="分类"   >
+          <a href="#分类" class="heading-link"><i class="fas fa-link"></i></a>分类</h3>
+      
+        <h4 id="正向代理"   >
+          <a href="#正向代理" class="heading-link"><i class="fas fa-link"></i></a>正向代理</h4>
+      <p>在如今的网络环境下，我们如果由于技术需要，需要去访问国外的某些网站，此时你会发现位于国外的某网站我们通过浏览器是没有办法访问的</p>
+<p>一般的思路是，找到一个可以访问海外网站的服务器，我们将请求发送给这个服务器，让他去访问国外的网站，然后将访问到的数据传递回来来达到我们的目的。</p>
+<p>上述这样的代理模式称为<strong>正向代理</strong>，正向代理最大的特点是客户端非常明确要访问的服务器地址；服务器只清楚请求来自哪个代理服务器，而不清楚来自哪个具体的客户端；<strong>正向代理模式屏蔽或者隐藏了真实客户端信息。</strong></p>
+<p>（差不多意思就是，当你通过正向代理访问 Google 并进行搜索时， Google 的服务器只清楚这个请求来自哪台代理服务器（或 ip 地址），却不知道是来自哪个客户端。因为<strong>客户端是通过代理服务器这个媒介来访访问网站的</strong>。而不用代理直接打开百度并搜索时，百度是知道这个请求是具体来自哪个客户端（或说 ip 地址）的）</p>
+<p>总结来说：正向代理，”它代理的是客户端，代客户端发出请求”，是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
+
+        <h5 id="正向代理的用途"   >
+          <a href="#正向代理的用途" class="heading-link"><i class="fas fa-link"></i></a>正向代理的用途</h5>
+      <ul>
+<li>访问原来无法访问的资源，如 Google 等国外技术资源</li>
+<li>可以做缓存，加速访问资源</li>
+<li>对客户端访问授权，上网进行认证</li>
+<li>记录用户访问记录（上网行为管理），对外隐藏用户信息</li>
+</ul>
+
+        <h4 id="反向代理"   >
+          <a href="#反向代理" class="heading-link"><i class="fas fa-link"></i></a>反向代理</h4>
+      <p>先来考察一个事例：</p>
+<p>国内某宝电商平台大家都清楚，每天访问的人数相信在双十一期间大家都有目共睹。那么他们是如何处理这个问题的呢？</p>
+<p><strong>分布式部署</strong></p>
+<p>对 <strong>分布式部署</strong></p>
+<p>直白来说就是通过部署多台服务器来解决访问人数限制的问题；某宝网站中大部分功能也是直接使用 Nginx 进行反向代理实现的，并且通过封装 Nginx 和其他的组件之后起了个高大上的名字：Tengine。</p>
+<p>简单理解 就是 一台 Nginx 服务器主要负责处理大量来自客户端请求，然后将这些请求分发给后台的业务服务器，那么这台负责处理请求服务器的运作方式就是反向代理。</p>
+<p>反向代理，”它<strong>代理的是服务端，代服务端接收请求</strong>“，主要用于服务器集群分布式部署，<strong>反向代理隐藏了服务器的信息</strong>。</p>
+
+        <h5 id="反向代理的用途"   >
+          <a href="#反向代理的用途" class="heading-link"><i class="fas fa-link"></i></a>反向代理的用途</h5>
+      <ul>
+<li><p>保证内网安全</p>
+<p>通常将反向代理作为公网访问地址，其他业务服务器是内网</p>
+</li>
+<li><p>负载均衡</p>
+<p>通过反向代理服务器来优化网站的负载</p>
+</li>
+</ul>
+
+        <h2 id="基本配置方法"   >
+          <a href="#基本配置方法" class="heading-link"><i class="fas fa-link"></i></a>基本配置方法</h2>
+      <p>安装完 <code>Nginx</code> 后，执行 <code>Nginx</code> 命令。访问服务器公网 ip 地址即可看到 <code>Nginx</code> 的初始页面</p>
+
+        <h3 id="两个位置"   >
+          <a href="#两个位置" class="heading-link"><i class="fas fa-link"></i></a>两个位置</h3>
+      
+        <h4 id="etc-Nginx"   >
+          <a href="#etc-Nginx" class="heading-link"><i class="fas fa-link"></i></a>/etc/Nginx/</h4>
+      <p>这里存放了 <code>Nginx</code> 的全局配置文件 <code>Nginx.conf</code></p>
+<blockquote>
+<p>或者被放在了 <code>/usr/local/Nginx/Nginx.conf</code> 👈 这里</p>
+</blockquote>
+<p>其实配置文件目录下还有一个 <code>Nginx.conf.default</code> 文件</p>
+<blockquote>
+<p>这个文件的作用是：当配置文件修改出错时，可以回到上一正常状态。</p>
+</blockquote>
+
+        <h4 id="usr-share-Nginx"   >
+          <a href="#usr-share-Nginx" class="heading-link"><i class="fas fa-link"></i></a>/usr/share/Nginx/</h4>
+      <p>这里是部署项目的默认存放目录（默认的 Nginx 欢迎页就是在这个目录下）</p>
+
+        <h3 id="开始配置"   >
+          <a href="#开始配置" class="heading-link"><i class="fas fa-link"></i></a>开始配置</h3>
+      
+        <h4 id="首先要将你的项目文件或项目目录上传到服务器上"   >
+          <a href="#首先要将你的项目文件或项目目录上传到服务器上" class="heading-link"><i class="fas fa-link"></i></a>首先要将你的项目文件或项目目录上传到服务器上</h4>
+      <p>可以<del>到 Github 建个仓库克隆到服务器</del>使用 <code>scp</code> 命令传输</p>
+<blockquote>
+<p>具体可参考我写的<a href="https://vikiboss.top/2020/02/14/scp/">利用 Linux 的 scp 命令传输文件到服务器</a></p>
+</blockquote>
+
+        <h4 id="然后用-vi-、vim-或者-nano-等编辑器配置-Nginx-conf-文件"   >
+          <a href="#然后用-vi-、vim-或者-nano-等编辑器配置-Nginx-conf-文件" class="heading-link"><i class="fas fa-link"></i></a>然后用 vi 、vim 或者 nano 等编辑器配置 Nginx.conf 文件</h4>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/Nginx/Nginx.conf <span class="comment">#此处是你的 Nginx.conf 文件路径</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="找到-http-块，可以看到其中有一个默认的-server-块的配置-👇-解释如下"   >
+          <a href="#找到-http-块，可以看到其中有一个默认的-server-块的配置-👇-解释如下" class="heading-link"><i class="fas fa-link"></i></a>找到 http{ } 块，可以看到其中有一个默认的 server{ } 块的配置 👇 解释如下</h4>
+      <figure class="highlight nginx"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设定虚拟主机配置</span></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="comment">#侦听80端口</span></span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">  <span class="comment">#定义使之生效的请求来源的域名</span></span><br><span class="line">  <span class="attribute">server_name</span> localhost;</span><br><span class="line">  <span class="comment">#默认请求</span></span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="comment">#定义服务器的默认网站根目录位置</span></span><br><span class="line">    <span class="attribute">root</span> /usr/share/Nginx/html;</span><br><span class="line">    <span class="comment">#定义首页索引文件的名称</span></span><br><span class="line">    <span class="attribute">index</span> index.html index.htm;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">#定义 404 页面</span></span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">404</span> /<span class="number">404</span>.html;</span><br><span class="line">  <span class="comment">#定义 50x 页面</span></span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /50x.html;</span><br><span class="line">  <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">    <span class="comment">#定义服务器的默认网站根目录位置</span></span><br><span class="line">    <span class="attribute">root</span> /usr/share/Nginx/html;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>启动 Nginx 后，访问服务器公网 ip 时显示的默认页面就是这个配置起了作用</p>
+
+        <h4 id="自己来写一个简单的-server-块-👇-（假设你部署的项目在-home-blog-下）"   >
+          <a href="#自己来写一个简单的-server-块-👇-（假设你部署的项目在-home-blog-下）" class="heading-link"><i class="fas fa-link"></i></a>自己来写一个简单的 server 块 👇 （假设你部署的项目在 /home/blog 下）</h4>
+      <figure class="highlight nginx"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">8000</span>;</span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">root</span> /home/blog;</span><br><span class="line">    <span class="attribute">index</span> index.html;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>配置完后运行 <code>Nginx -s -reload</code> 进行配置的重载，此时访问服务器 ip 地址的 8000 端口（如：47.93.187.210:8000）就能看到自己部署的项目了！</p>
+<p>请特别注意，这里的一个 <code>/</code> 或者一个 <code>空格</code> 可能都会影响最后部署的结果，请对照着仔细配置。</p>
+<p>当然，这里只介绍了最基础的配置方法。</p>
+
+        <h4 id="跨域问题的简单解决方案"   >
+          <a href="#跨域问题的简单解决方案" class="heading-link"><i class="fas fa-link"></i></a>跨域问题的简单解决方案</h4>
+      <p>先看代码 👇</p>
+<figure class="highlight nginx"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">8000</span>;</span><br><span class="line">  <span class="attribute">location</span><span class="regexp"> ^~/api/</span> &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> https://api.readhub.cn/;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">root</span> /home/news;</span><br><span class="line">    <span class="attribute">index</span> index.html;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>项目背景：</p>
+</blockquote>
+<blockquote>
+<p>在编写项目代码时，由于浏览器存在<strong>同源策略</strong>，直接调用 ReadHub 官方的 api （<span class="exturl"><a class="exturl__link"   href="https://api.readhub.cn/），会被"  target="_blank" rel="noopener">https://api.readhub.cn/），会被</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> block。此时用 ‘api/’ 来请求，并用 Nginx 代理到 <span class="exturl"><a class="exturl__link"   href="https://api.readhub.cn/"  target="_blank" rel="noopener">https://api.readhub.cn/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> ，浏览器便会认为你是在同一域下发起的请求而不会拦截，从而实现跨域。</p>
+</blockquote>
+<p>关键在于这里 👇</p>
+<figure class="highlight nginx"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~/api/</span> &#123;</span><br><span class="line">  <span class="attribute">proxy_pass</span> https://api.readhub.cn/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>location 后面用正则来匹配了所有以 api 结尾的请求，并将其转发到目的 url</p>
+<blockquote>
+<p>这里要搞清易混淆的地方</p>
+</blockquote>
+<blockquote>
+<p>你的待部署项目主页配置应该是 👇</p>
+</blockquote>
+<figure class="highlight nginx"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">  <span class="attribute">root</span> /home/news;</span><br><span class="line">  <span class="attribute">index</span> index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>指定当前服务器 ip 对应监听端口的返回页面（即你的项目主页）</p>
+</blockquote>
+<blockquote>
+<p>而下面这个 👇 是你项目中请求其他页面的资源时为了解决跨域问题而特定配置的一个代理，意义就是将当前包含 <code>/api/</code> 结尾的地址转发到你设置的地址，具体更多的正则匹配参考 👉<span class="exturl"><a class="exturl__link"   href="https://www.cnblogs.com/IPYQ/p/7889399.html"  target="_blank" rel="noopener">Nginx location 正则写法 - 博客园</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+<figure class="highlight nginx"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span><span class="regexp"> ^~/api/</span> &#123;</span><br><span class="line">  <span class="attribute">proxy_pass</span> https://api.readhub.cn/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>有了这个配置后，你的项目请求 api/topic 时，就被 Nginx 代理转发到了 <span class="exturl"><a class="exturl__link"   href="https://api.readhub.cn/topic"  target="_blank" rel="noopener">https://api.readhub.cn/topic</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 从而实现跨越。</p>
+
+        <h4 id="Nginx-location-的正则匹配归纳"   >
+          <a href="#Nginx-location-的正则匹配归纳" class="heading-link"><i class="fas fa-link"></i></a>Nginx location 的正则匹配归纳</h4>
+      <figure class="highlight nginx"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> = / &#123;</span><br><span class="line">  <span class="comment"># 精确匹配 / ，主机名后面不能带任何字符串</span></span><br><span class="line">  [ configuration A ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">  <span class="comment"># 因为所有的地址都以 / 开头，所以这条规则将匹配到所有请求</span></span><br><span class="line">  <span class="comment"># 但是正则和最长字符串会优先匹配</span></span><br><span class="line">  [ configuration B ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span> /api/ &#123;</span><br><span class="line">  <span class="comment"># 匹配任何以 /api/ 开头的地址，匹配符合以后，还要继续往下搜索</span></span><br><span class="line">  <span class="comment"># 只有后面的正则表达式没有匹配到时，这一条才会采用这一条</span></span><br><span class="line">  [ configuration C ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">location</span><span class="regexp"> ^~</span> /api/ &#123;</span><br><span class="line">  <span class="comment"># 匹配任何以 /api/ 开头的地址，匹配符合以后，停止往下搜索正则，采用这一条。</span></span><br><span class="line">  [ configuration D ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="常用正则"   >
+          <a href="#常用正则" class="heading-link"><i class="fas fa-link"></i></a>常用正则</h3>
+      <ul>
+<li><code>.</code> ： 匹配除换行符以外的任意字符</li>
+<li><code>?</code> ： 重复 0 次或 1 次</li>
+<li><code>+</code> ： 重复 1 次或更多次</li>
+<li><code>*</code> ： 重复 0 次或更多次</li>
+<li><code>\d</code> ：匹配数字</li>
+<li><code>^</code> ： 匹配字符串的开始</li>
+<li>： 匹配字符串的介绍</li>
+<li><code>{n}</code> ： 重复 n 次</li>
+<li><code>{n,}</code> ： 重复 n 次或更多次</li>
+<li><code>[c]</code> ： 匹配单个字符 c</li>
+<li><code>[a-z]</code> ： 匹配 a-z 小写字母的任意一个</li>
+</ul>
+<p>小括号 <code>()</code> 之间匹配的内容，可以在后面通过 <code>$1</code> 来引用， <code>$2</code> 表示的是前面第二个 <code>()</code> 里的内容。正则里面容易让人困惑的是 <code>\</code> 转义特殊字符。</p>
+
+        <h2 id="Nginx-的详细配置以及配置文件详解参考-👇"   >
+          <a href="#Nginx-的详细配置以及配置文件详解参考-👇" class="heading-link"><i class="fas fa-link"></i></a>Nginx 的详细配置以及配置文件详解参考 👇</h2>
+      <ul>
+<li><span class="exturl"><a class="exturl__link"   href="http://www.Nginx.cn/76.html"  target="_blank" rel="noopener">Nginx 基本配置与参数说明 - Nginx 中文网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link"   href="http://www.Nginx.cn/927.html"  target="_blank" rel="noopener">Nginx 反向代理配置 - Nginx 中文网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+
+        <h2 id="参考文章"   >
+          <a href="#参考文章" class="heading-link"><i class="fas fa-link"></i></a>参考文章</h2>
+      <ul>
+<li><span class="exturl"><a class="exturl__link"   href="http://www.Nginx.cn/591.html"  target="_blank" rel="noopener">Nginx 配置入门 - Nginx 中文网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link"   href="https://www.cnblogs.com/IPYQ/p/7889399.html"  target="_blank" rel="noopener">Nginx location 正则写法 - 博客园</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link"   href="https://www.cnblogs.com/wcwnina/p/8728391.html"  target="_blank" rel="noopener">Nginx 相关介绍(Nginx 是什么? 能干嘛?) - 博客园</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+<blockquote>
+<p>（强烈建议阅读参考文章里的前两篇文章 👍）</p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://vikiboss.top">Viki</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://vikiboss.top/2020/02/14/nginx-basis/">https://vikiboss.top/2020/02/14/nginx-basis/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://www.multmax.top/images/2020/09/02/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://www.multmax.top/images/2020/09/02/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/02/16/svg-format-intro/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">了解SVG格式</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/02/14/scp-to-transfer-files/"><span class="paginator-prev__text">利用scp命令跨linux服务器传输文件</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-简要介绍"><span class="toc-number">1.</span> <span class="toc-text">
+          Nginx 简要介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx-与-Apache"><span class="toc-number">1.1.</span> <span class="toc-text">
+          Nginx 与 Apache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx"><span class="toc-number">1.2.</span> <span class="toc-text">
+          Nginx</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">
+          安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于代理"><span class="toc-number">3.</span> <span class="toc-text">
+          关于代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代理的理解"><span class="toc-number">3.1.</span> <span class="toc-text">
+          代理的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分类"><span class="toc-number">3.2.</span> <span class="toc-text">
+          分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#正向代理"><span class="toc-number">3.2.1.</span> <span class="toc-text">
+          正向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#正向代理的用途"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">
+          正向代理的用途</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反向代理"><span class="toc-number">3.2.2.</span> <span class="toc-text">
+          反向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#反向代理的用途"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">
+          反向代理的用途</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本配置方法"><span class="toc-number">4.</span> <span class="toc-text">
+          基本配置方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#两个位置"><span class="toc-number">4.1.</span> <span class="toc-text">
+          两个位置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#etc-Nginx"><span class="toc-number">4.1.1.</span> <span class="toc-text">
+          &#x2F;etc&#x2F;Nginx&#x2F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-share-Nginx"><span class="toc-number">4.1.2.</span> <span class="toc-text">
+          &#x2F;usr&#x2F;share&#x2F;Nginx&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始配置"><span class="toc-number">4.2.</span> <span class="toc-text">
+          开始配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#首先要将你的项目文件或项目目录上传到服务器上"><span class="toc-number">4.2.1.</span> <span class="toc-text">
+          首先要将你的项目文件或项目目录上传到服务器上</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#然后用-vi-、vim-或者-nano-等编辑器配置-Nginx-conf-文件"><span class="toc-number">4.2.2.</span> <span class="toc-text">
+          然后用 vi 、vim 或者 nano 等编辑器配置 Nginx.conf 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#找到-http-块，可以看到其中有一个默认的-server-块的配置-👇-解释如下"><span class="toc-number">4.2.3.</span> <span class="toc-text">
+          找到 http{ } 块，可以看到其中有一个默认的 server{ } 块的配置 👇 解释如下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自己来写一个简单的-server-块-👇-（假设你部署的项目在-home-blog-下）"><span class="toc-number">4.2.4.</span> <span class="toc-text">
+          自己来写一个简单的 server 块 👇 （假设你部署的项目在 &#x2F;home&#x2F;blog 下）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#跨域问题的简单解决方案"><span class="toc-number">4.2.5.</span> <span class="toc-text">
+          跨域问题的简单解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx-location-的正则匹配归纳"><span class="toc-number">4.2.6.</span> <span class="toc-text">
+          Nginx location 的正则匹配归纳</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用正则"><span class="toc-number">4.3.</span> <span class="toc-text">
+          常用正则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-的详细配置以及配置文件详解参考-👇"><span class="toc-number">5.</span> <span class="toc-text">
+          Nginx 的详细配置以及配置文件详解参考 👇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">6.</span> <span class="toc-text">
+          参考文章</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://q.qlogo.cn/headimg_dl?dst_uin=1141284758&amp;spec=640&amp;img_type=jpg" alt="avatar"></div><p class="sidebar-ov-author__text">努力上进且优秀</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/vikiboss" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://t.me/VikiQAQ" target="_blank" rel="noopener" data-popover="Telegram" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-telegram"></i></span></a><a class="sidebar-ov-social-item" href="/about" target="_blank" rel="noopener" data-popover="1141284758" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">归档</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-code"></i></span><span>Viki</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="220,220,220" opacity="0.8" count="100" zIndex="-2"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '001a68ef5042ee4c963c',
+    clientSecret: 'c0d4f0dfb2aed7f71f84f14617ce062546be298d',
+    repo: 'blog-commits',
+    owner: 'vikiboss',
+    admin: ['vikiboss'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

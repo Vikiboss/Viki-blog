@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="32x32"><meta name="google-site-verification" content="X4XROnpYkPQrrcs1BnKxPb3ed5YmqRWQ9rLpIevdmjE"><meta name="description" content="总结了一些常见常用的 Git 命令 方便日后查阅">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git常用命令速览">
+<meta property="og:url" content="https://vikiboss.top/2020/10/11/git-commands-record/index.html">
+<meta property="og:site_name" content="Viki&#39;s Blog">
+<meta property="og:description" content="总结了一些常见常用的 Git 命令 方便日后查阅">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://i.loli.net/2020/10/15/Swsq8OFLTMDzGjE.jpg">
+<meta property="article:published_time" content="2020-10-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-21T01:58:47.619Z">
+<meta property="article:author" content="Viki">
+<meta property="article:tag" content="Blog Viki">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/10/15/Swsq8OFLTMDzGjE.jpg"><title>Git常用命令速览 | Viki's Blog</title><link ref="canonical" href="https://vikiboss.top/2020/10/11/git-commands-record/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-1861620172391138" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-177056870-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-177056870-1');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(https://i.loli.net/2020/11/21/24MWNinubCAd5Dr.png) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Viki's Blog</div><div class="header-banner-info__subtitle">努力上进且优秀</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Git常用命令速览</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon" data-popover="发表时间" data-popover-pos="up"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__value">2020-10-11</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon" data-popover="修改时间" data-popover-pos="up"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__value">2020-11-21</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon" data-popover="字数统计" data-popover-pos="up"><i class="far fa-file-word"></i></span><span class="post-meta-item__value">1.3k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon" data-popover="阅读时间" data-popover-pos="up"><i class="far fa-clock"></i></span><span class="post-meta-item__value">8分</span></span></div></header><div class="post-body">
+        <h2 id="用的最为频繁的-git-命令"   >
+          <a href="#用的最为频繁的-git-命令" class="heading-link"><i class="fas fa-link"></i></a>用的最为频繁的 git 命令</h2>
+      <p>首先上张图</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://i.loli.net/2020/10/15/Swsq8OFLTMDzGjE.jpg"  alt="git常用命令">
+      </p>
+
+        <h3 id="配置默认信息"   >
+          <a href="#配置默认信息" class="heading-link"><i class="fas fa-link"></i></a>配置默认信息</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"[username]"</span></span><br><span class="line">git config --global user.email <span class="string">"[email_address]"</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="初始化版本库"   >
+          <a href="#初始化版本库" class="heading-link"><i class="fas fa-link"></i></a>初始化版本库</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将当前目录初始化为 git 版本库</span></span><br><span class="line">git init</span><br><span class="line"><span class="comment"># 重命名当前分支为 main</span></span><br><span class="line">git branch -M main</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>推荐使用 main 作为主分支名 参见: <span class="exturl"><a class="exturl__link"   href="https://github.com/github/renaming#new-repositories-use-main-as-default-branch-name"  target="_blank" rel="noopener">链接</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</blockquote>
+
+        <h3 id="设置远程分支"   >
+          <a href="#设置远程分支" class="heading-link"><i class="fas fa-link"></i></a>设置远程分支</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin [repo_url]</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="暂存更改"   >
+          <a href="#暂存更改" class="heading-link"><i class="fas fa-link"></i></a>暂存更改</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="提交更改"   >
+          <a href="#提交更改" class="heading-link"><i class="fas fa-link"></i></a>提交更改</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"[commit_message]"</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="发布-main-分支"   >
+          <a href="#发布-main-分支" class="heading-link"><i class="fas fa-link"></i></a>发布 main 分支</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin main</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="较为常用的命令"   >
+          <a href="#较为常用的命令" class="heading-link"><i class="fas fa-link"></i></a>较为常用的命令</h2>
+      
+        <h3 id="一、修改与提交操作"   >
+          <a href="#一、修改与提交操作" class="heading-link"><i class="fas fa-link"></i></a>一、修改与提交操作</h3>
+      
+        <h4 id="查看当前版本库状态"   >
+          <a href="#查看当前版本库状态" class="heading-link"><i class="fas fa-link"></i></a>查看当前版本库状态</h4>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="暂存更改-1"   >
+          <a href="#暂存更改-1" class="heading-link"><i class="fas fa-link"></i></a>暂存更改</h4>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="提交更改-1"   >
+          <a href="#提交更改-1" class="heading-link"><i class="fas fa-link"></i></a>提交更改</h4>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"[commit_message]"</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="修改最后一次提交"   >
+          <a href="#修改最后一次提交" class="heading-link"><i class="fas fa-link"></i></a>修改最后一次提交</h4>
+      <p>运行以下命令后按<code>i</code>进入编辑模式</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="二、分支操作"   >
+          <a href="#二、分支操作" class="heading-link"><i class="fas fa-link"></i></a>二、分支操作</h3>
+      
+        <h4 id="新建分支"   >
+          <a href="#新建分支" class="heading-link"><i class="fas fa-link"></i></a>新建分支</h4>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch [new_branch]</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="切换分支"   >
+          <a href="#切换分支" class="heading-link"><i class="fas fa-link"></i></a>切换分支</h4>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout [banch_name]</span><br><span class="line">git checkout HEAD^</span><br><span class="line">git checkout HEAD~3</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="删除本地分支"   >
+          <a href="#删除本地分支" class="heading-link"><i class="fas fa-link"></i></a>删除本地分支</h4>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d [branch_name]</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="新建并切换到指定分支"   >
+          <a href="#新建并切换到指定分支" class="heading-link"><i class="fas fa-link"></i></a>新建并切换到指定分支</h4>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b [branch_name]</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="合并分支"   >
+          <a href="#合并分支" class="heading-link"><i class="fas fa-link"></i></a>合并分支</h4>
+      <p>合并指定分支到当前分支</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge [branch_name]</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="迁移分支"   >
+          <a href="#迁移分支" class="heading-link"><i class="fas fa-link"></i></a>迁移分支</h4>
+      <p>把当前分支迁移到目标分支的后面</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase [branch_name]</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>迁移完了后注意 <code>master</code> 等分支的当前引用位置，若目标分支是 <code>maste</code>、<code>main</code> 等主分支， 建议将主分支也 <code>rebase</code> 到最新的更改</p>
+</blockquote>
+
+        <h3 id="三、撤销操作"   >
+          <a href="#三、撤销操作" class="heading-link"><i class="fas fa-link"></i></a>三、撤销操作</h3>
+      
+        <h4 id="软撤销"   >
+          <a href="#软撤销" class="heading-link"><i class="fas fa-link"></i></a>软撤销</h4>
+      <p>仅仅撤销上一个 <code>commit</code> 不修改你改动了的文件</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></div></figure>
+
+<p>若只是想修改 <code>commit</code> 信息，可以先运行下列命令，然后输入 <code>i</code> 进入编辑模式，并修改第一行 <code>commit</code> 信息</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="硬撤销"   >
+          <a href="#硬撤销" class="heading-link"><i class="fas fa-link"></i></a>硬撤销</h4>
+      <p>撤销 commit 的同时， 删除你对文件做出的所有改动， 还原到上一个 commit 的状态</p>
+<blockquote>
+<p>说人话就是: 不懂的话千万别乱用 否则一下午写的代码全白给</p>
+</blockquote>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^ <span class="comment"># 撤销上一个提交</span></span><br><span class="line">git reset --hard HEAD~3 <span class="comment"># 撤销前三个提交</span></span><br></pre></td></tr></table></div></figure>
+
+<p>如果实在是不小心误删， 可以先查看撤销记录， 找到要还原的记录的 <code>commitID</code> ， 再通过 <code>commitID</code> 还原:</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br><span class="line">git reset --hard [commitID]</span><br></pre></td></tr></table></div></figure>
+
+<p>然后再根据需求撤销当前 <code>commmit</code></p>
+
+        <h3 id="四、查看提交历史"   >
+          <a href="#四、查看提交历史" class="heading-link"><i class="fas fa-link"></i></a>四、查看提交历史</h3>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> <span class="comment"># 查看git日志(按q退出)</span></span><br><span class="line">git show (commitID) <span class="comment"># 查看上一次(或者指定id的)提交记录</span></span><br><span class="line">git <span class="built_in">log</span> -p [file_name] <span class="comment"># 查看指定文件</span></span><br><span class="line">git blame [file_name] <span class="comment"># 以列表形式查看指定文件提交历史</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="附：可用来查阅的-git-命令集"   >
+          <a href="#附：可用来查阅的-git-命令集" class="heading-link"><i class="fas fa-link"></i></a>附：可用来查阅的 git 命令集</h2>
+      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">// 初始化一个 git 版本库</span><br><span class="line">git init</span><br><span class="line">// 查看版本库的状态</span><br><span class="line">git status</span><br><span class="line">// 全局默认信息配置</span><br><span class="line">git config --global user.email <span class="string">"[email_addres]"</span></span><br><span class="line">// 全局默认信息配置</span><br><span class="line">git config --global user.name <span class="string">"[username]"</span></span><br><span class="line">// 将所有修改添加到暂存区</span><br><span class="line">git add .</span><br><span class="line">// Ant 风格添加修改</span><br><span class="line">git add *</span><br><span class="line">// 将以 Hello 结尾的文件的所有修改添加到暂存区</span><br><span class="line">git add *Hello</span><br><span class="line">// 将所有以 Hello 开头的文件的修改添加到暂存区</span><br><span class="line">git add Hello*</span><br><span class="line">// 将以 Hello 开头且其后仅跟一位字符的文件的修改提交到暂存区</span><br><span class="line">git add Hello?</span><br><span class="line">// 提交更改并附带有意义的信息</span><br><span class="line">git commit -m <span class="string">"comment"</span></span><br><span class="line">// 为本地版本库设置远程分支</span><br><span class="line">git remote add origin [repo_url]</span><br><span class="line">// 克隆远程版本库到本地( git 协议最快)</span><br><span class="line">git <span class="built_in">clone</span> [repo_url]</span><br><span class="line">// 查看当前版本库所有分支</span><br><span class="line">git branch</span><br><span class="line">// 创建 [branch_name] 分支</span><br><span class="line">git branch [branch_name]</span><br><span class="line">// 删除 [branch_name] 分支</span><br><span class="line">git branch -d [branch_name]</span><br><span class="line">// 强制删除 [branch_name] 分支</span><br><span class="line">git branch -D [branch_name]</span><br><span class="line">// 丢弃工作区的修改退回原始状态</span><br><span class="line">git checkout -- [file_name]</span><br><span class="line">// 切换到一个已经存在的分支</span><br><span class="line">git checkout [branch_name]</span><br><span class="line">// 创建 [branch_name] 分支，并切换到 [branch_name] 分支</span><br><span class="line">git checkout -b [branch_name]</span><br><span class="line">// 拉取远程分支的最新更改到本地</span><br><span class="line">git pull</span><br><span class="line">// 将本地 [branch_name] 分支推送到远程的 [branch_name] 分支</span><br><span class="line">git push -u origin [branch_name]</span><br><span class="line">// 切换到 [branch_name] 分支并将本地 [branch_name] 分支推送到远程</span><br><span class="line">git push -u origin [branch_name]</span><br><span class="line">// 将标签 v1.0 推送到远程版本库</span><br><span class="line">git push -u origin v1.0</span><br><span class="line">// 一次性推送全部标签</span><br><span class="line">git push -u origin --tags</span><br><span class="line">// 将 [branch_name] 分支合并到 [branch_name] 分支</span><br><span class="line">git merge [branch_name]</span><br><span class="line">// 禁用 Fast forward 合并 [branch_name] 分支</span><br><span class="line">git merge --no-ff -m <span class="string">"comment"</span> [branch_name]</span><br><span class="line">// 冻结当前的分支修改</span><br><span class="line">git stash</span><br><span class="line">// 列出所有工作现场存储</span><br><span class="line">git stash list</span><br><span class="line">// 查看 commit 信息</span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line">// 将 commit 信息简化成一行显示</span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">// 图形化展示分支情况</span><br><span class="line">git <span class="built_in">log</span> --graph --pretty=oneline --abbrev-commit</span><br><span class="line">// 退回到上一个版本， HEAD 表示当前版本</span><br><span class="line">git reset --hard HEAD^</span><br><span class="line">// 退回到上两个版本</span><br><span class="line">git reset --hard HEAD^^</span><br><span class="line">//退回到上 100 个版本</span><br><span class="line">git reset --hard HEAD~100</span><br><span class="line">// 退回到指定版本</span><br><span class="line">git reset --hard [commitID]</span><br><span class="line">// 丢弃已经添加到暂存区的修改</span><br><span class="line">git reset HEAD [file_name]</span><br><span class="line">// 在当前版本 HEAD 上打一个名称为 [tag_name] 的标签</span><br><span class="line">git tag [tag_name]</span><br><span class="line">// 查看所有标签，列表出所有的标签名</span><br><span class="line">git tag</span><br><span class="line">// 为目标 commit 打上 [tag_name] 标签</span><br><span class="line">git tag [tag_name] [commitID]</span><br><span class="line">// 为 commit 打上标签</span><br><span class="line">git tag -a [tag_name] -m <span class="string">"[commit_msg]"</span> [commitID]</span><br><span class="line">// 查看标签的信息，包括文字说明</span><br><span class="line">git tag [tag_name]</span><br><span class="line">// 删除标签 [tag_name]</span><br><span class="line">git tag -d [tag_name]</span><br><span class="line">// 在文件未提交前查看文件被修改的部分</span><br><span class="line">git diff [file_name]</span><br><span class="line">// 从 git 版本库中删除文件(同时从文件系统中删除文件)</span><br><span class="line">git rm file</span><br><span class="line">// 查看之前版本的 commitID</span><br><span class="line">git reflog</span><br><span class="line">// 查看指定标签的提交信息</span><br><span class="line">git show [tag_name]</span><br></pre></td></tr></table></div></figure>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://vikiboss.top">Viki</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://vikiboss.top/2020/10/11/git-commands-record/">https://vikiboss.top/2020/10/11/git-commands-record/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://www.multmax.top/images/2020/09/02/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://www.multmax.top/images/2020/09/02/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/21/js-this/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">浅析JavaScript中this的指向问题</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/09/20/scoop-basis-commands/"><span class="paginator-prev__text">scoop —— 实用的 windows 包管理软件</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用的最为频繁的-git-命令"><span class="toc-number">1.</span> <span class="toc-text">
+          用的最为频繁的 git 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置默认信息"><span class="toc-number">1.1.</span> <span class="toc-text">
+          配置默认信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化版本库"><span class="toc-number">1.2.</span> <span class="toc-text">
+          初始化版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置远程分支"><span class="toc-number">1.3.</span> <span class="toc-text">
+          设置远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#暂存更改"><span class="toc-number">1.4.</span> <span class="toc-text">
+          暂存更改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提交更改"><span class="toc-number">1.5.</span> <span class="toc-text">
+          提交更改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布-main-分支"><span class="toc-number">1.6.</span> <span class="toc-text">
+          发布 main 分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#较为常用的命令"><span class="toc-number">2.</span> <span class="toc-text">
+          较为常用的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、修改与提交操作"><span class="toc-number">2.1.</span> <span class="toc-text">
+          一、修改与提交操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查看当前版本库状态"><span class="toc-number">2.1.1.</span> <span class="toc-text">
+          查看当前版本库状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#暂存更改-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">
+          暂存更改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#提交更改-1"><span class="toc-number">2.1.3.</span> <span class="toc-text">
+          提交更改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改最后一次提交"><span class="toc-number">2.1.4.</span> <span class="toc-text">
+          修改最后一次提交</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、分支操作"><span class="toc-number">2.2.</span> <span class="toc-text">
+          二、分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#新建分支"><span class="toc-number">2.2.1.</span> <span class="toc-text">
+          新建分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#切换分支"><span class="toc-number">2.2.2.</span> <span class="toc-text">
+          切换分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除本地分支"><span class="toc-number">2.2.3.</span> <span class="toc-text">
+          删除本地分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#新建并切换到指定分支"><span class="toc-number">2.2.4.</span> <span class="toc-text">
+          新建并切换到指定分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合并分支"><span class="toc-number">2.2.5.</span> <span class="toc-text">
+          合并分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迁移分支"><span class="toc-number">2.2.6.</span> <span class="toc-text">
+          迁移分支</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、撤销操作"><span class="toc-number">2.3.</span> <span class="toc-text">
+          三、撤销操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#软撤销"><span class="toc-number">2.3.1.</span> <span class="toc-text">
+          软撤销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#硬撤销"><span class="toc-number">2.3.2.</span> <span class="toc-text">
+          硬撤销</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、查看提交历史"><span class="toc-number">2.4.</span> <span class="toc-text">
+          四、查看提交历史</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附：可用来查阅的-git-命令集"><span class="toc-number">3.</span> <span class="toc-text">
+          附：可用来查阅的 git 命令集</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://q.qlogo.cn/headimg_dl?dst_uin=1141284758&amp;spec=640&amp;img_type=jpg" alt="avatar"></div><p class="sidebar-ov-author__text">努力上进且优秀</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/vikiboss" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://t.me/VikiQAQ" target="_blank" rel="noopener" data-popover="Telegram" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-telegram"></i></span></a><a class="sidebar-ov-social-item" href="/about" target="_blank" rel="noopener" data-popover="1141284758" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">归档</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-code"></i></span><span>Viki</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="220,220,220" opacity="0.8" count="100" zIndex="-2"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '001a68ef5042ee4c963c',
+    clientSecret: 'c0d4f0dfb2aed7f71f84f14617ce062546be298d',
+    repo: 'blog-commits',
+    owner: 'vikiboss',
+    admin: ['vikiboss'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

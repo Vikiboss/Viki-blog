@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="32x32"><meta name="google-site-verification" content="X4XROnpYkPQrrcs1BnKxPb3ed5YmqRWQ9rLpIevdmjE"><meta name="description" content="scoop可以提升你的windows开发体验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scoop —— 实用的 windows 包管理软件">
+<meta property="og:url" content="https://vikiboss.top/2020/09/20/scoop-basis-commands/index.html">
+<meta property="og:site_name" content="Viki&#39;s Blog">
+<meta property="og:description" content="scoop可以提升你的windows开发体验">
+<meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-09-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-07-15T09:33:41.734Z">
+<meta property="article:author" content="Viki">
+<meta property="article:tag" content="Blog Viki">
+<meta name="twitter:card" content="summary"><title>scoop —— 实用的 windows 包管理软件 | Viki's Blog</title><link ref="canonical" href="https://vikiboss.top/2020/09/20/scoop-basis-commands/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-1861620172391138" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-177056870-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-177056870-1');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(https://i.loli.net/2020/11/21/BZunq4vrKAHIj7P.png) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Viki's Blog</div><div class="header-banner-info__subtitle">努力上进且优秀</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">scoop —— 实用的 windows 包管理软件</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon" data-popover="发表时间" data-popover-pos="up"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__value">2020-09-20</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon" data-popover="修改时间" data-popover-pos="up"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__value">2021-07-15</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon" data-popover="字数统计" data-popover-pos="up"><i class="far fa-file-word"></i></span><span class="post-meta-item__value">1.1k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon" data-popover="阅读时间" data-popover-pos="up"><i class="far fa-clock"></i></span><span class="post-meta-item__value">6分</span></span></div></header><div class="post-body">
+        <h2 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a>前言</h2>
+      <p>我们先来了解一下什么是包管理</p>
+
+        <h3 id="包管理的概念"   >
+          <a href="#包管理的概念" class="heading-link"><i class="fas fa-link"></i></a>包管理的概念</h3>
+      <p>使用过 Linux 的伙伴都知道 Linux 有包管理的概念</p>
+<p>即：可以在命令行下通过一系列的指令来统一管理程序</p>
+<p>常见的使用情景包括: 搜索、安装、更新、卸载等</p>
+<p>macOS 也有类似的包管理器（brew，homebrew 等）</p>
+<p>借助包管理器，我们可以达到统一管理常用软件的目的</p>
+
+        <h3 id="windows-平台弊端"   >
+          <a href="#windows-平台弊端" class="heading-link"><i class="fas fa-link"></i></a>windows 平台弊端</h3>
+      <p>讲真的，在 mac 上写代码进行开发，体验是远超 windows 的，但是不是人人都买得起 mac ，所以在 windows 平台下进行开发是很多开发人员不得不面对的事实</p>
+<p>可是，windows 目前的软件生态想必大家都很清楚，各种常用开发软件（git chrome python vscode 等等）安装方式层出不穷，安装更新卸载流程繁琐耗时且效率低下，安装路径各异污染目录，且得不到统一的管理</p>
+
+        <h2 id="他来了-–-scoop"   >
+          <a href="#他来了-–-scoop" class="heading-link"><i class="fas fa-link"></i></a>他来了 – scoop</h2>
+      <p>scoop 的出现，就是为了来解决上述问题的</p>
+<p>简单地说，他将各种软件安装目录有序的堆放在一起，用户数据以及配置文件单独存放，更新时仅仅更新程序本身，极大的提高 windows 平台上管理软件的效率。</p>
+
+        <h2 id="如何安装-scoop"   >
+          <a href="#如何安装-scoop" class="heading-link"><i class="fas fa-link"></i></a>如何安装 scoop</h2>
+      <p>请确保已经安装了：</p>
+<ul>
+<li>① <code>PowerShell 5</code> (或更高版本，包括 <code>PowerShell Core</code>)</li>
+<li>② <code>.net Framework 4.5</code> (或更高版本)。</li>
+</ul>
+<blockquote>
+<p>现在大部分机子都上了 win10，系统大都符合要求，可以直接进行下面的操作</p>
+</blockquote>
+<p>在终端运行下列命令（建议在当前用户根目录(C:\Users\your_username)下）</p>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行这条命令</span></span><br><span class="line"><span class="built_in">Invoke-Expression</span> (<span class="built_in">New-Object</span> System.Net.WebClient).DownloadString(<span class="string">'https://get.scoop.sh'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者这条更短的命令</span></span><br><span class="line">iwr <span class="literal">-useb</span> get.scoop.sh | iex</span><br></pre></td></tr></table></div></figure>
+
+<p>然后你就可以在终端中输入 <code>scoop</code> 命令来查看是否安装完成</p>
+<p>如果你遇到错误，你可能需要改变执行策略，运行下列命令来启用 <code>powershell</code></p>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> RemoteSigned <span class="literal">-scope</span> CurrentUser</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="scoop-使用"   >
+          <a href="#scoop-使用" class="heading-link"><i class="fas fa-link"></i></a>scoop 使用</h2>
+      
+        <h3 id="添加-bucket"   >
+          <a href="#添加-bucket" class="heading-link"><i class="fas fa-link"></i></a>添加 bucket</h3>
+      <p>bucket 可以简单理解为软件清单</p>
+<p>只有当前添加的 bucket 里有的软件才可以下载</p>
+<p>通过下面的命令添加常用的 bucket 来扩大你可以安装的软件类别和数目</p>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最常用的bucket</span></span><br><span class="line">scoop bucket add extras</span><br><span class="line"><span class="comment"># 比较全的bucket</span></span><br><span class="line">scoop bucket add extras</span><br><span class="line">scoop bucket add dorado https://github.com/chawyehsu/dorado</span><br><span class="line">scoop bucket add sushi https://github.com/kidonng/sushi</span><br><span class="line">...</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="搜索软件"   >
+          <a href="#搜索软件" class="heading-link"><i class="fas fa-link"></i></a>搜索软件</h3>
+      <p>这条命令会在已经加入的 bucket 里搜寻合适的软件并打印出来</p>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop search neteasemusic <span class="comment"># 搜索网易云音乐</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="安装软件"   >
+          <a href="#安装软件" class="heading-link"><i class="fas fa-link"></i></a>安装软件</h3>
+      <figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop install APP_NAME</span><br></pre></td></tr></table></div></figure>
+
+<p>以下列出了常用的程序的安装命令</p>
+<blockquote>
+<p>必须先装 <code>7zip</code>，安装包的解压依靠它</p>
+</blockquote>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 推荐安装的常用程序（须先加extras的bucket）</span></span><br><span class="line">scoop install <span class="number">7</span>zip git googlechrome vscode nodejs yarn postman everything sharex quicklook telegram</span><br><span class="line"><span class="comment"># 个人使用的软件（须先加extras、dorado和nonportable的bucket）</span></span><br><span class="line">scoop install <span class="number">7</span>zip git googlechrome vscode yarn v2rayn sharex nodejs quicklook dismplusplus postman telegram oh<span class="literal">-my</span><span class="literal">-posh</span> pscolor posh<span class="literal">-git</span> mactype<span class="literal">-np</span> neteasemusic everything mysql adb sudo nginx</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="卸载软件"   >
+          <a href="#卸载软件" class="heading-link"><i class="fas fa-link"></i></a>卸载软件</h3>
+      <figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop uninstall APP_NAME</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="更新软件"   >
+          <a href="#更新软件" class="heading-link"><i class="fas fa-link"></i></a>更新软件</h3>
+      <figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scoop update APP_NAME</span><br><span class="line"><span class="comment"># 一般都全部更新，用 * 通配符匹配所有</span></span><br><span class="line">scoop update *</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="清理缓存（下载的安装包等）"   >
+          <a href="#清理缓存（下载的安装包等）" class="heading-link"><i class="fas fa-link"></i></a>清理缓存（下载的安装包等）</h3>
+      <figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop cache rm *</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="清理已安装软件残留的旧版本"   >
+          <a href="#清理已安装软件残留的旧版本" class="heading-link"><i class="fas fa-link"></i></a>清理已安装软件残留的旧版本</h3>
+      <p>更新程序后，旧版本的程序默认是保留的，可以手动清理</p>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop cleanup *</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="切换版本"   >
+          <a href="#切换版本" class="heading-link"><i class="fas fa-link"></i></a>切换版本</h3>
+      <p>当安装的软件有多个版本，且都需要同时使用时，可以参考下面设置两个 nodejs 版本共存与切换类似的方法</p>
+<ul>
+<li>先安装所需的版本</li>
+</ul>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scoop install nodejs12</span><br><span class="line">scoop install nodejs <span class="comment"># 此时默认的node -v输出的是最新版本</span></span><br></pre></td></tr></table></div></figure>
+
+<ul>
+<li>设置需要的版本 / 版本切换</li>
+</ul>
+<p>因为 nodejs12 和最新版共用 node 这个命令，只需要执行 reset 加对应的版本就能够将该命令设置为指定版本</p>
+<p>切换为 nodejs 12 版本</p>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop reset nodejs12</span><br></pre></td></tr></table></div></figure>
+
+<p>切换为 nodejs 最新版本</p>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop reset nodejs</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="忽略更新"   >
+          <a href="#忽略更新" class="heading-link"><i class="fas fa-link"></i></a>忽略更新</h3>
+      <p>通常我们会使用下面的命令来更新所有通过 scoop 下载的软件</p>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop update *</span><br></pre></td></tr></table></div></figure>
+
+<p>但是有时候我们不想让其中某个软件更新，这个时候就需要用到 hold/unhold 命令</p>
+<figure class="highlight powershell"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scoop hold postman <span class="comment"># 更新软件时禁止 postman 更新</span></span><br><span class="line">scoop unhold postman <span class="comment"># 取消禁止</span></span><br></pre></td></tr></table></div></figure>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://vikiboss.top">Viki</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://vikiboss.top/2020/09/20/scoop-basis-commands/">https://vikiboss.top/2020/09/20/scoop-basis-commands/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://www.multmax.top/images/2020/09/02/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://www.multmax.top/images/2020/09/02/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/10/11/git-commands-record/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Git常用命令速览</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/09/07/npm-commands-record/"><span class="paginator-prev__text">常用 npm 命令汇总</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">
+          前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#包管理的概念"><span class="toc-number">1.1.</span> <span class="toc-text">
+          包管理的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows-平台弊端"><span class="toc-number">1.2.</span> <span class="toc-text">
+          windows 平台弊端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#他来了-–-scoop"><span class="toc-number">2.</span> <span class="toc-text">
+          他来了 – scoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何安装-scoop"><span class="toc-number">3.</span> <span class="toc-text">
+          如何安装 scoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#scoop-使用"><span class="toc-number">4.</span> <span class="toc-text">
+          scoop 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-bucket"><span class="toc-number">4.1.</span> <span class="toc-text">
+          添加 bucket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索软件"><span class="toc-number">4.2.</span> <span class="toc-text">
+          搜索软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装软件"><span class="toc-number">4.3.</span> <span class="toc-text">
+          安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卸载软件"><span class="toc-number">4.4.</span> <span class="toc-text">
+          卸载软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新软件"><span class="toc-number">4.5.</span> <span class="toc-text">
+          更新软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理缓存（下载的安装包等）"><span class="toc-number">4.6.</span> <span class="toc-text">
+          清理缓存（下载的安装包等）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理已安装软件残留的旧版本"><span class="toc-number">4.7.</span> <span class="toc-text">
+          清理已安装软件残留的旧版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切换版本"><span class="toc-number">4.8.</span> <span class="toc-text">
+          切换版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#忽略更新"><span class="toc-number">4.9.</span> <span class="toc-text">
+          忽略更新</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://q.qlogo.cn/headimg_dl?dst_uin=1141284758&amp;spec=640&amp;img_type=jpg" alt="avatar"></div><p class="sidebar-ov-author__text">努力上进且优秀</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/vikiboss" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://t.me/VikiQAQ" target="_blank" rel="noopener" data-popover="Telegram" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-telegram"></i></span></a><a class="sidebar-ov-social-item" href="/about" target="_blank" rel="noopener" data-popover="1141284758" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">归档</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-code"></i></span><span>Viki</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="220,220,220" opacity="0.8" count="100" zIndex="-2"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '001a68ef5042ee4c963c',
+    clientSecret: 'c0d4f0dfb2aed7f71f84f14617ce062546be298d',
+    repo: 'blog-commits',
+    owner: 'vikiboss',
+    admin: ['vikiboss'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

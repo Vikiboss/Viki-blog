@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/assets/favicon.ico?v=2.1.1" type="image/png" sizes="32x32"><meta name="google-site-verification" content="X4XROnpYkPQrrcs1BnKxPb3ed5YmqRWQ9rLpIevdmjE"><meta name="description" content="Python 是一种面向对象、解释型、动态数据类型的高级程序设计脚本语言，同时也是一种功能强大而完善的通用型语言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 介绍以及 Python2 与 Python3 的区别">
+<meta property="og:url" content="https://vikiboss.top/2020/09/05/python-introduce-and-diff/index.html">
+<meta property="og:site_name" content="Viki&#39;s Blog">
+<meta property="og:description" content="Python 是一种面向对象、解释型、动态数据类型的高级程序设计脚本语言，同时也是一种功能强大而完善的通用型语言。">
+<meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-09-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-21T02:03:00.210Z">
+<meta property="article:author" content="Viki">
+<meta property="article:tag" content="Blog Viki">
+<meta name="twitter:card" content="summary"><title>Python 介绍以及 Python2 与 Python3 的区别 | Viki's Blog</title><link ref="canonical" href="https://vikiboss.top/2020/09/05/python-introduce-and-diff/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" data-ad-client="ca-pub-1861620172391138" async="" data-pjax=""></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-177056870-1" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'UA-177056870-1');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner" style="background: url(https://i.loli.net/2020/11/21/vYmfz2eAjhud7sP.jpg) no-repeat center/cover;"><div class="header-banner-info"><div class="header-banner-info__title">Viki's Blog</div><div class="header-banner-info__subtitle">努力上进且优秀</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Python 介绍以及 Python2 与 Python3 的区别</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon" data-popover="发表时间" data-popover-pos="up"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__value">2020-09-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon" data-popover="修改时间" data-popover-pos="up"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__value">2020-11-21</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon" data-popover="字数统计" data-popover-pos="up"><i class="far fa-file-word"></i></span><span class="post-meta-item__value">1.1k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon" data-popover="阅读时间" data-popover-pos="up"><i class="far fa-clock"></i></span><span class="post-meta-item__value">6分</span></span></div></header><div class="post-body">
+        <h3 id="关于-Python"   >
+          <a href="#关于-Python" class="heading-link"><i class="fas fa-link"></i></a>关于 Python</h3>
+      <p>Python 是一种<strong>面向对象、解释型、动态数据类型</strong>的高级程序设计脚本语言，同时也是一种功能强大而完善的通用型语言。</p>
+<p>它因为具有<strong>语法简单、易于学习、可读性强、功能强大（模块众多）、可扩展性强、开源免费、跨平台</strong>等优势而被很多程序员青睐。</p>
+<p>Python 简单的语法使得其代码量相对较少，能够让程序员专注于业务逻辑而不是纠结于编程语言语法本身。</p>
+<p>但是，<strong>Nothing is perfect</strong> ，Python 也是这样</p>
+<p>作为一门解释性语言，<strong>运行慢自然是 Python 的主要缺点之一</strong>，但目前计算机硬件的性能、计算速度在不断增强，这点往往不会带来大问题，大多数情况，用户往往感觉不到差异。</p>
+<p>其他的一些不足：不具备完整的语法检查、暴露源代码（解释性语言通病）、语法要求强制缩进等</p>
+
+        <h3 id="Python-用途广泛"   >
+          <a href="#Python-用途广泛" class="heading-link"><i class="fas fa-link"></i></a>Python 用途广泛</h3>
+      <p><strong>Web 开发</strong></p>
+<p>如豆瓣、知乎、果壳网、Google、NASA、YouTube、Facebook 等都将 Python 作为主要开发语言</p>
+<p><strong>服务端</strong></p>
+<p>App 与的游戏后台等</p>
+<p><strong>网络爬虫</strong></p>
+<p>快速抓取互联网数据</p>
+<p><strong>人工智能</strong></p>
+<p>相较于其他编程语言，Python 适合人工智能领域，得益于其很多适合用来做人工智能的库，如 <code>numpy</code>、<code>pybrain</code> 和 <code>matplotlib</code> 等，但是计算密集型以及调用硬件底层接口的核心算法还是得靠 <code>C/C++</code> 来实现</p>
+<p><strong>数据分析</strong></p>
+<p>在数据分析处理方面，Python 有很完备的生态环境。涉及到的分布式计算、数据可视化、数据库操作等，Python 中都有成熟的模块可以选择完成其功能。</p>
+<p><strong>其他的用途</strong></p>
+<p>自动化运维、系统编程、图形处理、数学处理、文本处理、数据库编程、网络编程、Web 编程、多媒体应用、黑客编程……</p>
+<blockquote>
+<p>Python 最最强大的功能当然是 <del><strong>用来做线代作业</strong></del></p>
+</blockquote>
+
+        <h3 id="Python2-与-Python3-的区别"   >
+          <a href="#Python2-与-Python3-的区别" class="heading-link"><i class="fas fa-link"></i></a>Python2 与 Python3 的区别</h3>
+      <p>Python3 不兼容 Python2，为了尽可能兼容早期用 Python2 写的<br>Python 程序，官方发布了 Python2.6 作为一个过度版本，其往后的版本完全支持 Python2 的同时兼容了部分 Python3 的语法。</p>
+<p><strong>Python3 在部分函数上做了修改</strong></p>
+<p>例如 <code>print</code></p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python2 的 print 语句</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'This is a Feature of Python2'</span></span><br><span class="line"><span class="comment"># Python 2.6/2.7 兼容Python3的print()函数</span></span><br><span class="line">print(<span class="string">'foo'</span>) <span class="comment"># 只可以存在一个参数</span></span><br><span class="line"><span class="comment"># Python3 将Python2的print语句换为了 print() 函数</span></span><br><span class="line">print(<span class="string">'Foo'</span>， <span class="number">1</span> + <span class="number">1</span>) <span class="comment"># 支持多个参数</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>Python3 增强了对 <code>Unicode</code> 的支持</strong></p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下语句符合Python3的语法</span></span><br><span class="line">浩浩 = <span class="string">'Viki'</span></span><br><span class="line">print(浩浩)</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>对<code>/</code>除法的处理方式不同</strong></p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在Python2中只有出现浮点数最后结果才是浮点数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span>/<span class="number">3</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1.0</span>/<span class="number">3</span></span><br><span class="line"><span class="number">0.333333333333</span></span><br><span class="line"><span class="comment"># 在Python3中始终是进行精确的除法</span></span><br><span class="line"><span class="comment"># 无论是否出现浮点数最后结果都是浮点数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span>/<span class="number">3</span></span><br><span class="line"><span class="number">0.3333333333333333</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>数据类型变动</strong></p>
+<p>Python3 仅存在一种整数类型—— <code>int</code> ，去除了 Python2 中的 long（长整数） 类型，相当于扩充了 <code>int</code> 型数据的长度</p>
+<p>新增了 <code>bytes</code> 类型，对应于 Python2 的八位串</p>
+<p><code>str</code> 对象和 <code>bytes</code> 对象可以使用 <code>.encode()</code> (str -&gt; bytes) 或 <code>.decode()</code> (bytes -&gt; str)方法相互转化</p>
+<p><code>dict</code> 的<code>.keys()</code>、<code>.items()</code> 和<code>.values()</code>方法返回迭代器</p>
+<blockquote>
+<p><code>//</code>（整除，也叫地板除）运算 2 和 3 的版本表现是一样的</p>
+</blockquote>
+<p><strong>异常处理不同</strong></p>
+<p>在 Python 3 中使用 <code>as</code> 作为关键词，捕获异常的语法由 <code>except exc， var</code> 改为 <code>except exc as var</code>。<br>使用语法 <code>except (exc1， exc2) as var</code> 可以同时捕获多种类别的异常。 Python 2.6 已经支持这两种语法。</p>
+<p><strong>将 <code>xrange</code> 换为 <code>range</code></strong></p>
+<p>Python3 用更规范的 <code>range</code> 函数代替 Python2 的 <code>xrange</code> 函数。在 Python 3 中使用 <code>xrange()</code> 会抛出命名异常</p>
+<p><strong>进制字面量表示不同</strong></p>
+<p>Python3 的字面量表示更规范</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python2</span></span><br><span class="line"><span class="number">0777</span> <span class="comment"># 数字0前缀表示八进制</span></span><br><span class="line"><span class="comment"># Python3</span></span><br><span class="line"><span class="number">0o777</span> <span class="comment"># 八进制的0后面必须加个小写字母o</span></span><br><span class="line"><span class="number">0b101</span> <span class="comment"># 二进制的0后面必须加个小写字母b</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>不等运算符</strong></p>
+<p>Python3 删减了 <code>&lt;&gt;</code> 不等运算符</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python2中</span></span><br><span class="line">a &lt;&gt; b</span><br><span class="line">a != b</span><br><span class="line"><span class="comment"># Python3中</span></span><br><span class="line">a != b</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>删除了 repr 表达式</strong></p>
+<p>Python2 中的反引号 `` 相当于 repr 函数的作用，而在 Python3 不允许使用反引号充当 <code>repr</code> 函数，只允许使用 <code>repr</code> 函数</p>
+<p><strong>多个模块被改名</strong></p>
+<p>这里就不详细展开说了。</p>
+
+        <h3 id="参考文章"   >
+          <a href="#参考文章" class="heading-link"><i class="fas fa-link"></i></a>参考文章</h3>
+      <ul>
+<li><span class="exturl"><a class="exturl__link"   href="https://www.runoob.com/python/python-2x-3x.html"  target="_blank" rel="noopener">Python2.x 与 3.x 版本的区别 - 菜鸟教程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://vikiboss.top">Viki</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://vikiboss.top/2020/09/05/python-introduce-and-diff/">https://vikiboss.top/2020/09/05/python-introduce-and-diff/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://www.multmax.top/images/2020/09/02/alipay.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://www.multmax.top/images/2020/09/02/wechat.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/09/06/python-basis/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Python3 小白快速入门</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/08/20/webpack-v4-basis/"><span class="paginator-prev__text">webpack4.x 基础</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于-Python"><span class="toc-number">1.</span> <span class="toc-text">
+          关于 Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python-用途广泛"><span class="toc-number">2.</span> <span class="toc-text">
+          Python 用途广泛</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python2-与-Python3-的区别"><span class="toc-number">3.</span> <span class="toc-text">
+          Python2 与 Python3 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文章"><span class="toc-number">4.</span> <span class="toc-text">
+          参考文章</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="http://q.qlogo.cn/headimg_dl?dst_uin=1141284758&amp;spec=640&amp;img_type=jpg" alt="avatar"></div><p class="sidebar-ov-author__text">努力上进且优秀</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/vikiboss" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://t.me/VikiQAQ" target="_blank" rel="noopener" data-popover="Telegram" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-telegram"></i></span></a><a class="sidebar-ov-social-item" href="/about" target="_blank" rel="noopener" data-popover="1141284758" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">归档</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-code"></i></span><span>Viki</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="220,220,220" opacity="0.8" count="100" zIndex="-2"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '001a68ef5042ee4c963c',
+    clientSecret: 'c0d4f0dfb2aed7f71f84f14617ce062546be298d',
+    repo: 'blog-commits',
+    owner: 'vikiboss',
+    admin: ['vikiboss'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
